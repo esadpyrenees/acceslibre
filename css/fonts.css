@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Ruda';
+    src: local('Ruda Black'), local('Ruda-Black'),
+        url('fonts/Ruda-Black.woff2') format('woff2'),
+        url('fonts/Ruda-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ruda';
+    src: local('Ruda Regular'), local('Ruda-Regular'),
+        url('fonts/Ruda-Regular.woff2') format('woff2'),
+        url('fonts/Ruda-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ruda';
+    src: local('Ruda Bold'), local('Ruda-Bold'),
+        url('fonts/Ruda-Bold.woff2') format('woff2'),
+        url('fonts/Ruda-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
+@font-face {
+    font-family: 'Savate';
+    src: url('fonts/savate-regular-webfont.woff2') format('woff2'),
+         url('fonts/savate-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
