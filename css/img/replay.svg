@@ -5,11 +5,11 @@
 	 width="60px" height="60px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve">
 <g>
 	
-		<polyline fill="none" stroke="#FFFFFF" stroke-width="4.6096" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-		56.5,25.088 49.129,32.458 41.763,25.088 	"/>
+		<polyline fill="none" stroke="#FFFFFF" stroke-width="4.2617" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		57.846,25.459 51.029,32.273 44.221,25.459 	"/>
 	
-		<path fill="none" stroke="#FFFFFF" stroke-width="4.6096" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-		M26.382,52.881C13.743,52.881,3.5,42.638,3.5,30.001c0-12.639,10.243-22.882,22.882-22.882c12.638,0,22.881,10.243,22.881,22.882
-		c0,0.829-0.047,1.646-0.134,2.456"/>
+		<path fill="none" stroke="#FFFFFF" stroke-width="4.2617" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M30,51.154c-11.686,0-21.155-9.47-21.155-21.153C8.845,18.315,18.314,8.846,30,8.846c11.685,0,21.154,9.47,21.154,21.155
+		c0,0.767-0.043,1.521-0.125,2.272"/>
 </g>
 </svg>

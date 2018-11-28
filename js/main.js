@@ -1,69 +1,209 @@
 $(function(){
     
-    // audioplayer
-    var $audioplayer = $('#audioplayer'),
-        $audio = $('#audio'),
-        $audioplayertext = $('#audioplayertext'),
-        $audioplayerbutton =$('#audioplayerbutton'),
-        audio_element = $audio[0];
 
-    $audioplayerbutton.on('click', function(){
-        if (audio_element.paused) {
-            this.className='playing';
-            audio_element.play();
-          } else {
-            this.className='paused';
-            audio_element.pause();
-          }
-    })
+    /* ------------------------------------------------------------
+    ---------------------------------------------------------------
+    Skrollr
+    ---------------------------------------------------------------
+    -------------------------------------------------------------*/ 
+
+    var skrollrinit = true;
+    var sk = skrollr.init({
+        // forceHeight:false,
+        constants: {
+            offsetstart: function() {
+                var val = $(document).height() - $(window).height() 
+                if (skrollrinit) {
+                    skrollrinit = false;
+                    val = val / 2
+                }
+                return val;
+            },
+            offsetend: function() {
+                return $(document).height() + 500 ;
+            }
+        }
+    });
+
+
+    /* ------------------------------------------------------------
+    ---------------------------------------------------------------
+    Texte
+    ---------------------------------------------------------------
+    -------------------------------------------------------------*/ 
+
+    var texte = {
+        limit: window.innerHeight / 2,
+        check_interval: null,
+        init: function(el_id){
+
+            clearInterval(texte.check_interval);
+            
+            var images_refs = [],
+                aside_images = [],
+                el = document.querySelector(el_id);
+                images = el.querySelectorAll('img'),
+                aside = document.querySelector('#aside');
+
+            aside.classList.add('hidden');
+            aside.innerHTML = '';
+
+            images.forEach( function(image, index) {
+                var span =  document.createElement('span');
+                span.setAttribute('rel', index);
+                span.className="ref";
+                //ajout du span à la liste des éléments références
+                images_refs.push(span);
+                // insertion de l’élément référence dans le DOM avant l’image
+                image.parentNode.insertBefore(span, image)
+                
+                
+                // déplacement de l’image vers aside
+                // on crée une figure pour mettre l’image ET la légende
+                var figure = document.createElement('figure');
+                var figcaption = document.createElement('figcaption');
+                figcaption.innerHTML = image.getAttribute('alt');
+                figure.appendChild(image.cloneNode());
+                figure.appendChild(figcaption);
+
+                aside.appendChild(figure);
+                // stockage de l’image dans la liste
+                aside_images.push(figure);
+
+                // on caceh l’image originale
+                image.style.display='none';
+            });
+            
+            // check des images dans le viewport
+            texte.check_interval = setInterval(function(){
+                for (var i = 0; i < images_refs.length; i++) {
+
+                    var span = images_refs[i];
+                    var idx = span.getAttribute('rel');
+              
+                    if(isElementInViewport(span, texte.limit) ){
+                        aside_images.forEach( function(element, index) {
+                            element.classList.remove('visible');
+                        });
+                        aside_images[idx].classList.add('visible');
+                    } else {
+                        aside_images[idx].classList.remove('visible');
+                    }
+                }
+            }, 50)
+        },
+        destroy: function(){
+            var aside = document.querySelector('#aside');
+
+            aside.innerHTML = '';
+            clearInterval(texte.check_interval);
+
+        }
+    }        
+    
+
+
+    /* ------------------------------------------------------------
+    ---------------------------------------------------------------
+    Audio
+    ---------------------------------------------------------------
+    -------------------------------------------------------------*/ 
+
+    var audio = {
+        element: document.querySelector('audio'),
+        button: document.querySelector('#audioplayerbutton'),
+        texte: document.querySelector('#audioplayertext'),
+        init:function(){
+            audio.button.addEventListener('click', function(){
+                if (audio.element.paused) {
+                    this.className='playing';
+                    audio.element.play();
+                } else {
+                    this.className='paused';
+                    audio.element.pause();
+                }
+            })
+        },
+
+        newaudio: function(mp3, textelement){
+
+            audio.element.pause();
+            audio.element.setAttribute('src', mp3 );
+            audio.element.addEventListener('canplaythrough', function() { 
+                audio.button.classList.add('playing');
+                audio.button.classList.remove('paused');
+                audio.element.play();
+            }, false);
+            audio.element.addEventListener('ended', function() { 
+               audio.element.setAttribute('src', "" );
+            }, false);
+            
+            audio.texte.innerHTML = textelement.text();
+        },
+        destroy:function(){
+            audio.element.setAttribute('src', "" );
+            audio.texte.innerHTML = "";
+        },
+        pause:function(){
+            audio.element.pause();
+            audio.button.classList.remove('playing');
+            audio.button.classList.add('paused');
+        }
+    }
+
+    audio.init();
+
+
+    /* ------------------------------------------------------------
+    ---------------------------------------------------------------
+    Navigation
+    ---------------------------------------------------------------
+    -------------------------------------------------------------*/ 
 
     // liens navigation principale
     $('.homelink a').on('click', function(e){
         e.stopPropagation();
         e.preventDefault();
-        var $this = $(this);
+        var $this = $(this),
+            type = $this.attr('data-type'),
+            href = $this.attr('href'),
+            $target = $(href);
 
         // cas de l’audio
 
-        if ($this.attr('data-type') == "audio") {
-            $audioplayer.removeClass('vide');
-            audio_element.pause();
-            audio_element.setAttribute('src', $this.attr('data-mp3') );
-            audio_element.addEventListener('canplaythrough', function() { 
-                $audioplayerbutton.toggleClass('playing paused');
-                audio_element.play();
-            }, false);
-            audio_element.addEventListener('ended', function() { 
-               $audioplayer.addClass('vide')
-            }, false);
-            
-            $audioplayertext.text($this.find('.audioinfo').text())
+        if (type == "audio") {
+            audio.newaudio( $this.attr('data-mp3'), $this.find('.audioinfo'));
             return false;
+        }
+
+        if (type == "texte") {
+            texte.init(href);
+        } else {
+            texte.destroy();
         }
 
         // cas des pages texte ou video
 
-        var $target = $($(this).attr('href'));
+        
         var $is_article_visible = $('article.visible');
         $is_article_visible.addClass('hidden');
 
-        $('#home').animate({
+        $('#skrollr-body').animate({
             scrollTop: 0
         }, 'slow', function(){
+
             $('html, body').animate({
-                scrollTop: $('#home').offset().top
+                scrollTop: $('#skrollr-body').offset().top
             }, 'slow', function(){
 
                 $target.slideDown('fast', function() {
-                    $('#content').removeClass('hidden');
-                    var $this = $(this);
-                    $is_article_visible.css('display', 'none');
-                    $this.css('display', 'block');
-                    $this.removeClass('hidden');
-                    $this.addClass('visible');
-                    setTimeout(function(){
+                    $('#aside, #content').removeClass('hidden');
+                    
+                    $(this).removeClass('hidden');
 
-                    }, 500)
+                    $(this).addClass('visible');
+                    sk.refresh();
+                    
                 });   
             });
         });
@@ -71,8 +211,6 @@ $(function(){
     });
 
 
-    
-    
 
     // responsive video
 

@@ -1,48 +1,99 @@
+
+window.onbeforeunload = function(){ window.scrollTo(0,0); }
+
 $(function(){
-    $titles = $('#introtext .slide');
     var timestamps = [],
         now = 0,
-        old = 0;
+        old = 0,
+        init = true;
+
+    var titles = document.querySelectorAll('.slide'),
+        video = document.querySelector('video'),
+        wrapper = document.querySelector('#video'),
+        overlay = document.querySelector('#intro-overlay'),
+        button = document.querySelector('#replay');
+
 
     // reset scroll on load
-    $('html, body').scrollTop(0);
+    window.scrollTo(0,0); 
 
     // build timestamps
-    $titles.each(function(o) {
-        if ($(this).attr('data-start')) {
+    titles.forEach( function(element, index) {
+        if (element.getAttribute('data-start') != "") {
             timestamps.push({
-                start: +$(this).attr('data-start'),
-                end: +$(this).attr('data-end'),
-                elm: $(this)
+                start: +element.getAttribute('data-start'),
+                end: +element.getAttribute('data-end'),
+                elm: element
             });
         }
     });
 
-    $('video').bind('timeupdate', function(event) {
+    
+
+    video.addEventListener('timeupdate', function(event) {
         now = parseInt(this.currentTime);
         if (now > old) showsection(now);
         old = now;
     });
 
+    function playVideo(){
+        wrapper.classList.add('playing');
+        video.muted=false;
+        video.play();
+        overlay.classList.remove('visible');
+        overlay.classList.remove('start');
+        init = false;    
+        button.classList.remove('play');
+    
+    }
+
+    button.addEventListener('click', function(e){
+        console.log('button')
+        e.stopPropagation();
+        if (!video.paused) {
+            switchToHome();
+        } else {
+            playVideo();
+        }
+    })
+
     function showsection(t) {
         for (var i = 0; i < timestamps.length; i++) {
             if (t >= timestamps[i].start && t <= timestamps[i].end) {
-                timestamps[i].elm.addClass('current');
+                timestamps[i].elm.classList.add('current');
             } else {
-                timestamps[i].elm.removeClass('current');
+                timestamps[i].elm.classList.remove('current');
             }
         }
     };
 
-    $('video').bind('ended, click', function(event){
-        $('body').removeClass('locked');
-        this.muted=true;
-        this.pause();
-        $('#intro-overlay').addClass('visible');
-        $('html, body').animate({
-            scrollTop:$('#home').offset().top
-        }, 'slow');
+
+    video.addEventListener('ended', function(event){
+        switchToHome();  
     })
 
+    overlay.addEventListener('click', function(){
+        if (init)  playVideo();
+        // else switchToHome();  
+    })
+
+    video.addEventListener('click', function(event){
+        if (init)  playVideo();
+        else switchToHome();  
+    })
+
+    function switchToHome(){
+        document.body.classList.remove('locked');
+        wrapper.classList.remove('playing');
+        video.muted=true;
+        video.pause();
+        overlay.classList.add('visible');
+        setTimeout(function(){
+            button.classList.add('play');
+        }, 500)
+        $('html, body').animate({
+            scrollTop:$('#skrollr-body').offset().top
+        }, 'slow');
+    }
     
 })

@@ -120,15 +120,14 @@
 		
 		<div id="video">
 			<div id="bar"></div>
-			<video autoplay
-				oncanplay="this.play()" 
+			<video 
 				poster="" >
 				<source type="video/mp4" src="video/intro.mp4">
 				<source type="video/webm" src="video/intro.webm">
 			</video>
-			<div id="intro-overlay">
-				<button class="replay">
-					<span>replay</span>
+			<div id="intro-overlay" class="start">
+				<button class="replay play" id="replay">
+					<span></span>
 				</button>
 			</div>
 			<div id="introtext">
@@ -152,128 +151,145 @@
 			</div>
 		</div>
 
-		<div id="home">
 
-			<div id="audioplayer" class="vide">
-				<button id="audioplayerbutton" class="paused">
-					<strong>Play</strong>
-					<span>Pause</span>
-				</button>
-				<p id="audioplayertext"></p>
-				<audio id="audio"></audio>
-			</div>
+		<div id="skrollr-body">
 
-			<header id="site-header">
-				<h2>Libre accès)s( </h2>
-				<p>
-					Découvrez les coulisses et les artistes du festival accès)s( #18 – paysage fiction. 
-				</p>
-			</header>
-
-			<div id="content" class="hidden">
-
-				 <?php foreach ($contents as $c): ?>
-				 	<article id="<?= $c['slug'] ?>" 
-				 		class="content content-<?= $c['type'] ?>">
-				 		<div>
-				 			<h1><?= $c['title'] ?></h1>
-				 			<?= $Parsedown->text( file_get_contents($c['file']) ); ?>
-				 		</div>
-				 	</article>
-				 <?php endforeach ?>
-
-			</div>
-
-			<div id="scroll">
-
-				<!-- Étude de terrain  -->
-
-				<div class="mountain dragscroll" id="mountain1" data-factor='1'>
-					<div class="line">
-						<header>
-							<h2>Étude de terrain </h2>
-							<p>À la rencontre des organisateurs, commissaire et stagiaires.</p>
-						</header>
-
-						<?php foreach ($etudedeterrain as $c): ?>
-							<div class="homelink"  <?= randpos() ?> >
-						 	<a href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
-						 		<span class="info">[ <?= $c['type'] ?> ]</span>
-						 		<span class="img"><img src="img/althome/<?= $c['thumb'] ?>"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
-						 		<h3><?= $c['title'] ?></h3>
-						 		<?php if ($c['type'] == 'audio'): ?>
-						 			<div class="audioinfo"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
-						 		<?php endif ?>
-						 	</a>
-						 	</div>
-						<?php endforeach ?>
-					
-					</div>
-				</div>
-
-				<!-- Entretiens sous le soleil  -->
-
-				<div class="mountain dragscroll" id="mountain2" data-factor='0.8'>
-					<div class="line">
-						<header>
-							<h2>Entretiens sous le soleil </h2>
-							<p>Entretiens en vidéo avec cinq artistes présents dans l’exposition.</p>
-						</header>
-
-						<?php foreach ($entretienssouslesoleil as $c): ?>
-							<div class="homelink"  <?= randpos() ?> >
-						 	<a href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
-						 		<span class="info">[ <?= $c['type'] ?> ]</span>
-						 		<span class="img"><img src="img/althome/<?= $c['thumb'] ?>"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
-						 		<h3><?= $c['title'] ?></h3>
-						 		<?php if ($c['type'] == 'audio'): ?>
-						 			<div class="audioinfo"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
-						 		<?php endif ?>
-						 	</a>
-						 	</div>
-						<?php endforeach ?>
-
-					</div>
-				</div>
-
-				<!-- Hors piste  -->
-
-				<div class="mountain dragscroll" id="mountain3" data-factor='0.6'>
-					<div class="line">
-						<header>
-							<h2>Hors piste </h2>
-							<p>Autour du festival, textes et sons pour voir différemment. </p>
-						</header>
-						
-						<?php foreach ($horspiste as $c): ?>
-							<div class="homelink"  <?= randpos() ?> >
-						 	<a href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
-						 		<span class="info">[ <?= $c['type'] ?> ]</span>
-						 		<span class="img"><img src="img/althome/<?= $c['thumb'] ?>"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
-						 		<h3><?= $c['title'] ?></h3>
-						 		<?php if ($c['type'] == 'audio'): ?>
-						 			<div class="audioinfo"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
-						 		<?php endif ?>
-						 	</a>
-						 	</div>
-						<?php endforeach ?>
-
-					</div>
-				</div>
-				
-			</div>
+		
+		<div id="audioplayer" class="vide">
+			<audio id="audio" src=""></audio>
+			<button id="audioplayerbutton" class="paused">
+				<strong>Play</strong>
+				<span>Pause</span>
+			</button>
+			<p id="audioplayertext"></p>
 		</div>
+
+		<header id="site-header">
+			<h2>Libre accès)s( </h2>
+			<p>
+				Découvrez les coulisses et les artistes du festival accès)s( #18 – paysage fiction. 
+			</p>
+		</header>
 
 
 		
 
+		<div id="content" class="hidden">
+			<aside id="aside"></aside>
+			<?php foreach ($contents as $c): ?>
+			 	<article id="<?= $c['slug'] ?>" 
+			 		class="content content-<?= $c['type'] ?>">
+			 		<div>
+			 			<h1><?= $c['title'] ?></h1>
+			 			<div class="body">
+			 				<div class="text"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
+			 			</div>
+			 			
+			 		</div>
+			 	</article>
+			<?php endforeach ?>
 
+		</div>
+			
+			
+		<div id="nav"
+			
+			>
+			<!-- Étude de terrain  -->
 
+			<div class="mountain dragscroll" id="mountain1" 
+				
+				 data-_offsetstart="transform:translate(0vw,0vh);" data-_offsetend="transform:translate(-195vw,0vh);" >
+				<div class="line">
+					<header>
+						<h2>Étude de terrain </h2>
+						<p>À la rencontre des organisateurs, commissaire et stagiaires.</p>
+					</header>
+
+					<?php foreach ($etudedeterrain as $c): ?>
+						<div class="homelink"  <?= randpos() ?> >
+					 	<a href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>" id="homelink-<?= $c['slug'] ?>"	>
+					 		<span class="info">[ <?= $c['type'] ?> ]</span>
+					 		<span class="img"><img src="img/althome/<?= $c['thumb'] ?>"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
+					 		<h3><?= $c['title'] ?></h3>
+					 		<?php if ($c['type'] == 'audio'): ?>
+					 			<div class="audioinfo"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
+					 		<?php endif ?>
+					 	</a>
+					 	</div>
+					<?php endforeach ?>
+				
+				</div>
+			</div>
+
+			<!-- Entretiens sous le soleil  -->
+
+			<div class="mountain dragscroll" id="mountain2" 
+				
+				 data-_offsetstart="transform:translate(0vw,0vh);" data-_offsetend="transform:translate(-160vw,0vh);" >
+				<div class="line">
+					<header>
+						<h2>Entretiens sous le soleil </h2>
+						<p>Entretiens en vidéo avec cinq artistes présents dans l’exposition.</p>
+					</header>
+
+					<?php foreach ($entretienssouslesoleil as $c): ?>
+						<div class="homelink"  <?= randpos() ?> >
+					 	<a href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
+					 		<span class="info">[ <?= $c['type'] ?> ]</span>
+					 		<span class="img"><img src="img/althome/<?= $c['thumb'] ?>"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
+					 		<h3><?= $c['title'] ?></h3>
+					 		<?php if ($c['type'] == 'audio'): ?>
+					 			<div class="audioinfo"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
+					 		<?php endif ?>
+					 	</a>
+					 	</div>
+					<?php endforeach ?>
+
+				</div>
+			</div>
+
+			<!-- Hors piste  -->
+
+			<div class="mountain dragscroll" id="mountain3" 
+				
+				 data-_offsetstart="transform:translate(0vw,0vh);" data-_offsetend="transform:translate(-125vw,0vh);" >
+				<div class="line">
+					<header>
+						<h2>Hors piste </h2>
+						<p>Autour du festival, textes et sons pour voir différemment. </p>
+					</header>
+					
+					<?php foreach ($horspiste as $c): ?>
+						<div class="homelink"  <?= randpos() ?> >
+					 	<a href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
+					 		<span class="info">[ <?= $c['type'] ?> ]</span>
+					 		<span class="img"><img src="img/althome/<?= $c['thumb'] ?>"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
+					 		<h3><?= $c['title'] ?></h3>
+					 		<?php if ($c['type'] == 'audio'): ?>
+					 			<div class="audioinfo"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
+					 		<?php endif ?>
+					 	</a>
+					 	</div>
+					<?php endforeach ?>
+
+				</div>
+				
+			</div>
+
+		</div>
+
+		</div>
+		
 	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/dragscroll.js"></script>
+	<script type="text/javascript" src="js/verge.js"></script>
+	<script type="text/javascript" src="js/skrollr.min.js"></script>
 	<script type="text/javascript" src="js/intro.js"></script>
-	<script type="text/javascript" src="js/scroll.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript">
+		
+	
+	</script>
 	
 </body>
 

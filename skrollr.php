@@ -278,6 +278,7 @@
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript">
 	skrollr.init({
+		forceHeight:false,
 		constants: {
 			//fill the box for a "duration" of 150% of the viewport (pause for 150%)
 			//adjust for shorter/longer pause

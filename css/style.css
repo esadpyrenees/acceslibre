@@ -28,13 +28,18 @@ a { color: black; text-decoration: none; }
     overflow:hidden;
     width: 100%;
     height:100%;
+    height: 100vh;
+    height: calc(100vh + 2em);
     position: relative;
 }
+
 #video video{
     height:100%;
     width:100%;
-    object-fit:cover
+    object-fit:cover;
 }
+
+
 
 @media only screen and (orientation:portrait){
     #video {
@@ -78,7 +83,7 @@ a { color: black; text-decoration: none; }
 }
 
 #intro-overlay{
-    pointer-events: none;
+    /* pointer-events: none; */
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
     background: black;
@@ -87,77 +92,106 @@ a { color: black; text-decoration: none; }
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 3em;
 }
 #intro-overlay.visible{
     opacity: 1;
 }
 
+button.replay.play {
+    background-position: 0 0;
+    opacity: 1;
+}
 button.replay{
-    background: url(img/replay.svg);
+    background: url("img/play.svg")  0 -60px;
     pointer-events: all;
     width: 60px;
     height: 60px;
-    border: none;
     opacity: 0;
-    transition: opacity 250ms ease-out 500ms;    
+    border: none;
+    transition: opacity 250ms ease-out 500ms, transform 250ms ease-out;    
     cursor: pointer;
+}
+
+.replay:hover{
+    transform:scale(1.2)   
 }
 #intro-overlay.visible button{
     opacity: 1;
 }
+#intro-overlay.start {
+    background: transparent;
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: all;
+}
 
 
+#video.playing #intro-overlay{
+    background: transparent;
+    justify-content: flex-end;
+    opacity: 1;
+
+}
+#video.playing #intro-overlay button{
+    opacity: 1;
+}
 
 /* ------------------------------------------------ home */
 
-#home{
-    top: 100%;
+#skrollr-body{
+    height:300%;
+    position: relative;
     width: 100%;
-    height:100vh;
-    position: absolute;   
-    overflow:scroll;
 }
 
-#scroll{
-    overflow: hidden;
-    width: 100%;
-    height:100vh;
-    position: relative;   
+#nav {
+    position: sticky;
+    top:0;
 }
-#content.hidden + #scroll {
-    height:140%;
-}
+
 .mountain { 
     position:absolute;
     width: 100%; 
     background-position: top center;
-    overflow-x: scroll;
-    overflow-y:hidden;
+    overflow:visible;
     transition: bottom 250ms ease-out;
-    border-top: 5px solid black;
-    height:60vh; 
-    bottom: -20vh;
-    cursor: grab;
+    height:40vh; 
+    pointer-events: none;
 }
-#mountain3 { z-index:3; transform: translateY(-55vh); }
-#mountain2 { z-index:4; transform: translateY(-35vh); }
-#mountain1 { z-index:5; transform: translateY(-15vh); }
+#mountain3 { z-index:3; }
+#mountain2 { z-index:4; }
+#mountain1 { z-index:5; }
 
-/* #mountain1 .line { background: url("img/mountain1.svg"); padding-top: 10%; } */
+#mountain3 {
+    padding-left: 50vw;
+    width: 225vw;
+    /* bottom:50vh; */
+    top: 10vh;
+}
+#mountain2 {
+    padding-left: 30vw;
+    width: 240vw;
+    /* bottom:25vh; */
+    top: 35vh; 
+}
+#mountain1 {
+    padding-left: 10vw;
+    width: 255vw;
+    /* bottom:0; */
+    top: 60vh ;
+}
+
+/* #mountain1 .line { background: url("img/mountain1.svg"); padding-top: 10vh; } */
 /* #mountain2 .line { background: url("img/mountain2.svg"); padding-top: 5%; } */
 /* #mountain3 .line { background: url("img/mountain3.svg"); padding-top: 5%; } */
 
-.mountain { background: white; transition: background 250ms ease-out;}
-.mountain:hover { background: #eee; }
 
-.mountain2-active #mountain1 { bottom: -55vh; }
-.mountain3-active #mountain1 { bottom: -55vh; }
-.mountain3-active #mountain2 { bottom: -55vh; }
 
 .line {    
     white-space: nowrap;
     height: 100%;
-    min-width: 250vw;
+    pointer-events: none;
 }
 .line > * { 
     width: 35vw; 
@@ -167,23 +201,34 @@ button.replay{
     vertical-align: top;
 }
 
-@media (max-width: 600px){
+/* @media (max-width: 600px){
     .line > * { width: 75vw; }    
 }
 @media (max-width: 450px){
     .line > * { width: 115vw; }    
 }
-
+ */
 /* ------------------------------------------------ nav */
 
 .line header {
     padding: 3em;
 }
-header h2 { margin: 0 0 .5em; font-family: "Savate"; font-weight: normal;}
+header h2 { 
+    margin: 0 0 .5em; 
+    font-weight: normal; 
+    font-family: "Savate"; 
+    font-family: "Ruda";
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25em;
+    font-weight: 900;
+    font-size: 1em;
+}
 header p { margin: 0; max-width:20ch; white-space: normal;}
 
 .homelink a {
     display: inline-block;
+    pointer-events: all;
 }
 .homelink h3 { display: none; }
 
@@ -233,7 +278,8 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     letter-spacing: 0.025em;
     font-size: .85em;
 }
-#audioplayer.vide button { display: none; }
+#audio[src=""] ~ button { display: none; }
+
 #audioplayer button{
     background: black;
     padding: 0 .15em;
@@ -269,23 +315,31 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 /* ------------------------------------------------ content */
 
 #site-header {
-    position: absolute;
+    position: relative;
+    position: sticky;
     padding: 3em;
+    top: 0;
+}
+#site-header h2 {
+    top: 0;
 }
 
 .content {
     display: none;
+    overflow: auto;
 }
-.content div {
-    padding: 200px 3em 3em;
+.content > div {
+    padding: 0 3em 3em;
     visibility: hidden;
 }
-.content.visible div{
+.content.visible > div{
     visibility: visible;
+    display: block;
 }
-.content.hidden div{
+.content.hidden > div{
     opacity: 0;
     min-height: 120vh;
+    display: none;
 }
 
 
@@ -294,9 +348,15 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 .content h2,
 .content h3,
 .content ul {
-    max-width: 40em;
-    margin: 2em auto .5em auto;
+    margin: 1em 0 .25em;
 }
+.text { 
+    float: right;
+    max-width: 36em;
+}
+
+/* texte */
+
 .content-texte p {
     line-height: 1.5;
 }
@@ -304,6 +364,39 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     font-size: 3em;
     line-height: 1.2;
     margin: 2rem auto .5rem auto;
+}
+
+#aside{
+    position: sticky;
+    width:33%;;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    height: 100vh;
+    flex-direction: column;
+    float: right;
+    z-index: -1;
+    visibility: visible;
+}
+#aside.hidden{ visibility: hidden; }
+.ref { background: black; display: inline-block; width: 12ch; height: .6em; }
+
+#aside figure {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    opacity: 0;
+    transition: all 250ms ease-out;
+    width: calc(100% - 80px);
+}
+#aside figure img { width: 100% }
+
+#aside figure.visible{
+    opacity: 1;
+    transition: all 250ms ease-out;
 }
 
 
