@@ -1,7 +1,7 @@
 
 window.onbeforeunload = function(){ window.scrollTo(0,0); }
 
-$(function(){
+
     var timestamps = [],
         now = 0,
         old = 0,
@@ -27,8 +27,13 @@ $(function(){
             });
         }
     });
-
     
+
+    setTimeout(function(){
+        if(autoplay){                   
+            wrapper.classList.add('autoplay');
+        }
+    }, 150);
 
     video.addEventListener('timeupdate', function(event) {
         now = parseInt(this.currentTime);
@@ -48,7 +53,6 @@ $(function(){
     }
 
     button.addEventListener('click', function(e){
-        console.log('button')
         e.stopPropagation();
         if (!video.paused) {
             switchToHome();
@@ -96,4 +100,4 @@ $(function(){
         }, 'slow');
     }
     
-})
+$(function(){})

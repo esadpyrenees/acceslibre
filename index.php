@@ -121,6 +121,7 @@
 		<div id="video">
 			<div id="bar"></div>
 			<video 
+				autoplay 
 				poster="" >
 				<source type="video/mp4" src="video/intro.mp4">
 				<source type="video/webm" src="video/intro.webm">
@@ -182,7 +183,9 @@
 			 		<div>
 			 			<h1><?= $c['title'] ?></h1>
 			 			<div class="body">
-			 				<div class="text"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
+			 				<div class="<?= $c['type'] ?>">
+			 					<?= $Parsedown->text( file_get_contents($c['file']) ); ?>
+			 				</div>
 			 			</div>
 			 			
 			 		</div>
@@ -281,8 +284,9 @@
 
 		</div>
 		
+	<script type="text/javascript" src="js/autoplay.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/verge.js"></script>
+	<script type="text/javascript" src="js/isinviewport.js"></script>
 	<script type="text/javascript" src="js/skrollr.min.js"></script>
 	<script type="text/javascript" src="js/intro.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>

@@ -102,6 +102,7 @@ button.replay.play {
     background-position: 0 0;
     opacity: 1;
 }
+.autoplay .replay.play{ display: none; }
 button.replay{
     background: url("img/play.svg")  0 -60px;
     pointer-events: all;
@@ -350,7 +351,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 .content ul {
     margin: 1em 0 .25em;
 }
-.text { 
+.content-texte .texte { 
     float: right;
     max-width: 36em;
 }
@@ -382,6 +383,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     visibility: visible;
 }
 #aside.hidden{ visibility: hidden; }
+#aside:empty{display: none;}
 .ref { background: black; display: inline-block; width: 12ch; height: .6em; }
 
 #aside figure {
