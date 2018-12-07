@@ -13,7 +13,7 @@
 			'file'=> 'contents/charles.md',
 			'thumb'=> 'charles.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'PbZjzjqm6CQ',
 			'slug'=> 'charles-carcopino'
 		),
 		'pauline' => array(
@@ -29,7 +29,7 @@
 			'file'=> 'contents/rapdm.md',
 			'thumb'=> 'rapdm.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'Uu3p_wvyVmE',
 			'slug'=> 'rapdm'
 		),
 		'quitterie' => array(
@@ -48,7 +48,7 @@
 			'file'=> 'contents/mischa.md',
 			'thumb'=> 'mischa.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'oNmUq1fsj7M',
 			'slug'=> 'mischa-daams'
 		),
 		'david-de-tscharner' => array(
@@ -56,7 +56,7 @@
 			'file'=> 'contents/david.md',
 			'thumb'=> 'david.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'fllkZOyh43Y',
 			'slug'=> 'david-de-tscharner'
 		),
 		'fabien-leaustic' => array(
@@ -64,7 +64,7 @@
 			'file'=> 'contents/fabien.md',
 			'thumb'=> 'fabien.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'vYRr0TgDHTE',
 			'slug'=> 'fabien-leaustic'
 		),
 		'jacques-perconte' => array(
@@ -72,7 +72,7 @@
 			'file'=> 'contents/jacques.md',
 			'thumb'=> 'jacques.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'MMx3zE2SGiE',
 			'slug'=> 'jacques-perconte'
 		),
 		'helen-evans' => array(
@@ -80,7 +80,7 @@
 			'file'=> 'contents/helen.md',
 			'thumb'=> 'helen.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'tdVfHXl6gtc',
 			'slug'=> 'helen-evans'
 		)
 	);
