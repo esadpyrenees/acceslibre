@@ -22,3 +22,6 @@ Sarah Taurinya Brown
 
 #### Enseignants du pôle Nouveaux médias 
 Julien Bidoret, Vincent Meyer, Jean-Paul Labro, Julien Drochon, Jean Marie Blanchet.
+
+#### Introduction vidéo
+Montage : Clara Loustau. Musique : Nuh Nuh, [Joasihno](https://joasihno.bandcamp.com/)
