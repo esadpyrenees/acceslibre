@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php 
+<?php
     include('Parsedown.php');
     $Parsedown = new Parsedown();
 
@@ -13,9 +13,9 @@
 			'file'=> 'contents/charles.md',
 			'thumb'=> 'charles.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'PbZjzjqm6CQ',
 			'slug'=> 'charles-carcopino'
-		), 
+		),
 		'pauline' => array(
 			'title'=> 'Pauline Chasseriaud',
 			'file'=> 'contents/pauline.md',
@@ -29,7 +29,7 @@
 			'file'=> 'contents/rapdm.md',
 			'thumb'=> 'rapdm.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'Uu3p_wvyVmE',
 			'slug'=> 'rapdm'
 		),
 		'quitterie' => array(
@@ -48,7 +48,7 @@
 			'file'=> 'contents/mischa.md',
 			'thumb'=> 'mischa.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'oNmUq1fsj7M',
 			'slug'=> 'mischa-daams'
 		),
 		'david-de-tscharner' => array(
@@ -56,7 +56,7 @@
 			'file'=> 'contents/david.md',
 			'thumb'=> 'david.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'fllkZOyh43Y',
 			'slug'=> 'david-de-tscharner'
 		),
 		'fabien-leaustic' => array(
@@ -64,7 +64,7 @@
 			'file'=> 'contents/fabien.md',
 			'thumb'=> 'fabien.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'vYRr0TgDHTE',
 			'slug'=> 'fabien-leaustic'
 		),
 		'jacques-perconte' => array(
@@ -72,7 +72,7 @@
 			'file'=> 'contents/jacques.md',
 			'thumb'=> 'jacques.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'MMx3zE2SGiE',
 			'slug'=> 'jacques-perconte'
 		),
 		'helen-evans' => array(
@@ -80,7 +80,7 @@
 			'file'=> 'contents/helen.md',
 			'thumb'=> 'helen.png',
 			'type'=> 'video',
-			'yt_id' => '1Rth2gvdhyE',
+			'yt_id' => 'tdVfHXl6gtc',
 			'slug'=> 'helen-evans'
 		)
 	);
@@ -134,11 +134,11 @@
 </head>
 <body class="locked">
 
-		
+
 		<div id="video">
 			<div id="bar"></div>
-			<video 
-				autoplay 
+			<video
+				autoplay
 				poster="" >
 				<source type="video/mp4" src="video/intro.mp4">
 				<source type="video/webm" src="video/intro.webm">
@@ -172,7 +172,7 @@
 
 		<div id="skrollr-body">
 
-		
+
 		<div id="audioplayer" class="vide">
 			<audio id="audio" src=""></audio>
 			<button id="audioplayerbutton" class="paused">
@@ -186,19 +186,19 @@
 			<a href="#apropos" class="contentlink" id="aproposlink" data-type='texte'>
 				à propos
 			</a>
-			<h2>Libre accès)s( </h2>
-			<p>
-				Découvrez les coulisses et les artistes du festival accès)s( #18 – paysage fiction. 
+			<h2  id="titre_libre_acces">Libre accès)s( </h2>
+			<p id="intro_libre_acces">
+				Découvrez les coulisses et les artistes du festival accès)s( #18 – paysage fiction.
 			</p>
 		</header>
 
 
-		
+
 
 		<div id="content" class="hidden">
 			<aside id="aside"></aside>
 			<?php foreach ($contents as $c): ?>
-			 	<article id="<?= $c['slug'] ?>" 
+			 	<article id="<?= $c['slug'] ?>"
 			 		class="content content-<?= $c['type'] ?>">
 			 		<div>
 			 			<h1><?= $c['title'] ?></h1>
@@ -215,12 +215,12 @@
 			 					<?= $Parsedown->text( file_get_contents($c['file']) ); ?>
 			 				</div>
 			 				<?php if ($c['gallery'] != ''): ?>
-			 				
+
 		 						<?= $Parsedown->text( file_get_contents($c['gallery']) ); ?>
-			 				
+
 		 					<?php endif ?>
 			 			</div>
-			 			
+
 			 		</div>
 			 	</article>
 			<?php endforeach ?>
@@ -281,19 +281,19 @@
 <img src="img/jeanne/DSC_0491.JPG" alt="">
 		 				</div>
 		 			</div>
-		 			
+
 		 		</div>
 		 	</article>
 		</div>
-			
-			
+
+
 		<div id="nav"
-			
+
 			>
 			<!-- Étude de terrain  -->
 
-			<div class="mountain dragscroll" id="mountain1" 
-				
+			<div class="mountain dragscroll" id="mountain1"
+
 				 data-_offsetstart="transform:translate(0vw,0vh);" data-_offsetend="transform:translate(-195vw,0vh);" >
 				<div class="line">
 					<header>
@@ -313,14 +313,14 @@
 					 	</a>
 					 	</div>
 					<?php endforeach ?>
-				
+
 				</div>
 			</div>
 
 			<!-- Entretiens sous le soleil  -->
 
-			<div class="mountain dragscroll" id="mountain2" 
-				
+			<div class="mountain dragscroll" id="mountain2"
+
 				 data-_offsetstart="transform:translate(0vw,0vh);" data-_offsetend="transform:translate(-160vw,0vh);" >
 				<div class="line">
 					<header>
@@ -346,15 +346,15 @@
 
 			<!-- Hors piste  -->
 
-			<div class="mountain dragscroll" id="mountain3" 
-				
+			<div class="mountain dragscroll" id="mountain3"
+
 				 data-_offsetstart="transform:translate(0vw,0vh);" data-_offsetend="transform:translate(-125vw,0vh);" >
 				<div class="line">
 					<header>
 						<h2>Hors piste </h2>
 						<p>Autour du festival, textes et sons pour voir différemment. </p>
 					</header>
-					
+
 					<?php foreach ($horspiste as $c): ?>
 						<div class="homelink"  <?= randpos() ?> >
 					 	<a class="contentlink" href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
@@ -369,13 +369,13 @@
 					<?php endforeach ?>
 
 				</div>
-				
+
 			</div>
 
 		</div>
 
 		</div>
-		
+
 	<script type="text/javascript" src="js/autoplay.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/isinviewport.js"></script>
@@ -384,10 +384,10 @@
 	<script type="text/javascript" src="js/intro.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript">
-		
-	
+
+
 	</script>
-	
+
 </body>
 
 </html>

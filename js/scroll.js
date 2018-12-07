@@ -6,11 +6,21 @@ $(function() {
     const $mountains = $('.mountain'),
         $scroll = $('#scroll');
 
+
+  //   if ( scrollTop() ) {
+  //     $('#intro_libre_acces').addClass('.is-scrolling');
+  // }
+  //
+  //   else {
+  //     $('#intro_libre_acces').removeClass('.is-scrolling');
+  //   }
+
+
     $mountains.on('scroll', function(e){
-        
+
         e.stopPropagation();
         var $this = $(this);
-        
+
         let $siblings = $this.siblings();
         var this_factor = parseFloat($this.attr('data-factor'));
         var sl = $this.scrollLeft();
@@ -60,10 +70,10 @@ $(function() {
             startingPos = [];
         });
 
-        
+
     // $mountains.on('click', function(e){
-        
-        
+
+
     // })
 
     backhome = function(this_id){
