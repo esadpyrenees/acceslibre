@@ -42,7 +42,7 @@ $(function(){
             var images_refs = [],
                 aside_images = [],
                 el = document.querySelector(el_id);
-                images = el.querySelectorAll('img'),
+                images = el.querySelectorAll('.texte img'),
                 aside = document.querySelector('#aside');
 
             aside.classList.add('hidden');
@@ -110,11 +110,12 @@ $(function(){
     -------------------------------------------------------------*/ 
 
     var audio = {
-        element: document.querySelector('audio'),
+        element: document.querySelector('#audio'),
         button: document.querySelector('#audioplayerbutton'),
+        textcontainer: document.querySelector('#audioplayertextcontainer'),
         texte: document.querySelector('#audioplayertext'),
         init:function(){
-            audio.button.addEventListener('click', function(){
+            audio.button.addEventListener('click', function(e){
                 if (audio.element.paused) {
                     this.className='playing';
                     audio.element.play();
@@ -126,10 +127,10 @@ $(function(){
         },
 
         newaudio: function(mp3, textelement){
-
             audio.element.pause();
             audio.element.setAttribute('src', mp3 );
             audio.element.addEventListener('canplaythrough', function() { 
+                console.log('canplaythrough')
                 audio.button.classList.add('playing');
                 audio.button.classList.remove('paused');
                 audio.element.play();
@@ -138,7 +139,13 @@ $(function(){
                audio.element.setAttribute('src', "" );
             }, false);
             
-            audio.texte.innerHTML = textelement.text();
+            var txt = textelement.text();
+            audio.textcontainer.classList.remove('marquee');
+            audio.texte.innerHTML = txt;
+            void audio.textcontainer.offsetWidth; // trick : https://css-tricks.com/restart-css-animation/
+            audio.textcontainer.classList.add('marquee');
+
+            audio.textcontainer.style.animationDuration = txt.length * 250; // magick number
         },
         destroy:function(){
             audio.element.setAttribute('src', "" );
@@ -156,12 +163,41 @@ $(function(){
 
     /* ------------------------------------------------------------
     ---------------------------------------------------------------
+    Audio
+    ---------------------------------------------------------------
+    -------------------------------------------------------------*/ 
+
+    var video = {
+        player: null,
+
+        newvideo: function(element){
+
+            video.player = new Plyr('#player-' + element);
+            video.player.on('play', event => {
+                const instance = event.detail.plyr;
+                if (audio.element) {
+                    audio.element.pause();
+                }
+            })
+        },
+        destroy:function(){
+            if(video.player) {
+                video.player.pause();
+                video.player.destroy();
+            }
+        }
+    }
+
+
+
+    /* ------------------------------------------------------------
+    ---------------------------------------------------------------
     Navigation
     ---------------------------------------------------------------
     -------------------------------------------------------------*/ 
 
     // liens navigation principale
-    $('.homelink a').on('click', function(e){
+    $('.contentlink').on('click', function(e){
         e.stopPropagation();
         e.preventDefault();
         var $this = $(this),
@@ -180,6 +216,14 @@ $(function(){
             texte.init(href);
         } else {
             texte.destroy();
+        }
+
+
+        if (type == "video") {
+            video.destroy();
+            video.newvideo(href.replace('#', ''));
+        } else {
+            video.destroy();
         }
 
         // cas des pages texte ou video

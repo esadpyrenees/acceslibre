@@ -19,8 +19,14 @@ ul, ol { list-style: none; }
 
 a { color: black; text-decoration: none; }
 .ruda { font-family: Ruda; }
-.savate{ font-family: 'Savate'; font-weight: normal;}
+.savate{ 
+    font-family: 'Savate'; 
+    font-weight: normal;
+}
 
+:root {
+
+}
 
 /* ------------------------------------------------ intro video */
 
@@ -71,8 +77,17 @@ a { color: black; text-decoration: none; }
 .slide{
     visibility: hidden;
 }
-.slide.current{
+.slide.current,
+.slide.title{
     visibility: visible;
+}
+.slide.title{
+    animation-name: glitch-anim-1;
+    animation-duration: 8s;
+    animation-delay: 13s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    opacity: 1;
 }
 .flex {
     display: flex;
@@ -218,12 +233,13 @@ header h2 {
     margin: 0 0 .5em; 
     font-weight: normal; 
     font-family: "Savate"; 
-    font-family: "Ruda";
+    /* font-family: "Ruda";
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.05em; */
     margin-bottom: 0.25em;
     font-weight: 900;
     font-size: 1em;
+    font-size: 1.15em;
 }
 header p { margin: 0; max-width:20ch; white-space: normal;}
 
@@ -273,11 +289,22 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     justify-content: center;
     padding-left: 2.5em;
 }
+#audioplayertextcontainer {
+    animation: none ;
+}
+#audioplayertextcontainer.marquee {
+    animation: scrolling 25000ms infinite linear;
+}
+@keyframes scrolling {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
 #audioplayertext{
     color: #ddd;
     font-weight: 300;
     letter-spacing: 0.025em;
     font-size: .85em;
+    white-space: nowrap;
 }
 #audio[src=""] ~ button { display: none; }
 
@@ -290,6 +317,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 7;
 }
 #audioplayer strong, 
 #audioplayer span{
@@ -348,12 +376,37 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 .content h1,
 .content h2,
 .content h3,
+.content h4,
 .content ul {
     margin: 1em 0 .25em;
 }
 .content-texte .texte { 
     float: right;
     max-width: 36em;
+    max-width:calc(50% - 20px);
+}
+
+.content-texte .gallery {
+    
+    /* max-width: calc(100% - 36em - 40px); */
+    /* padding-right: 40px; */
+    /* column-count: 2;
+    column-gap: 40px; */
+    /* display: flex;
+    flex-wrap: wrap; */
+    margin-right: -40px;
+}
+.content-texte .gallery p { 
+    margin:0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.content-texte .gallery img {
+    max-width: 100%;
+    width: calc(25% - 45px);
+    margin: 0 40px 40px 0;
+    display: inline-block;
+
 }
 
 /* texte */
@@ -365,11 +418,15 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     font-size: 3em;
     line-height: 1.2;
     margin: 2rem auto .5rem auto;
+    color: black;
+    max-width: 1280px !important;
 }
 
 #aside{
     position: sticky;
-    width:33%;;
+    width:100%;
+    max-width: calc( 1280px - 36em );
+    min-width: calc( 33% );
     right: 0;
     top: 0;
     display: flex;
@@ -418,8 +475,18 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     width: 100%;
     height: 100%;
 }
-
-
+.plyr__poster {
+    background-color: black;
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.content > div .playercontainer { background-color: black; margin: 0 -3em; position: relative;}
+.body .video,
+.plyr {
+    max-width: 1280px !important;
+    margin: 0 auto;
+}
 /* ------------------------------------------------ media */
 
 @media (max-width: 450px) {
@@ -430,3 +497,63 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     
 }
 
+
+
+
+
+@keyframes glitch-anim-1 {
+    0% { 
+        opacity: 1;
+        -webkit-clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+        clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+    }
+    1% {
+        -webkit-clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+        clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+    }
+    2% {
+        -webkit-clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+        clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+    }
+    3% {
+        -webkit-clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+        clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+    }
+    4% {
+        -webkit-clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+        clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+    }
+    5% {
+        -webkit-clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+        clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+    }
+    6% {
+        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+        clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+    }
+    7% {
+        -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+        clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+    }
+    8% {
+        -webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+        clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+    }
+    9% {
+        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+        clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+    }
+    10% {
+        -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+        clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+    }
+    10.9% {
+        opacity: 1;
+    }
+    11%, 100% {
+        opacity: 1;
+        /* transform: translate3d(0,0,0); */
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0px 0%);
+        
+    }
+}

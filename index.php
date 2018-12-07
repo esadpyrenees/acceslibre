@@ -13,6 +13,7 @@
 			'file'=> 'contents/charles.md',
 			'thumb'=> 'charles.png',
 			'type'=> 'video',
+			'yt_id' => '1Rth2gvdhyE',
 			'slug'=> 'charles-carcopino'
 		), 
 		'pauline' => array(
@@ -23,12 +24,13 @@
 			'mp3' => 'audio/pauline-chasseriaud.mp3',
 			'slug'=> 'pauline-chasseriaud'
 		),
-		'monstage-d-expo' => array(
-			'title'=> 'Mon)s(tage d’expo',
-			'file'=> 'contents/stagiaires.md',
-			'thumb'=> 'stagiaires.png',
+		'rapdm' => array(
+			'title'=> 'Rencontre avec des petites mains',
+			'file'=> 'contents/rapdm.md',
+			'thumb'=> 'rapdm.png',
 			'type'=> 'video',
-			'slug'=> 'monstage-d-expo'
+			'yt_id' => '1Rth2gvdhyE',
+			'slug'=> 'rapdm'
 		),
 		'quitterie' => array(
 			'title'=> 'Quitterie Charpentier',
@@ -46,6 +48,7 @@
 			'file'=> 'contents/mischa.md',
 			'thumb'=> 'mischa.png',
 			'type'=> 'video',
+			'yt_id' => '1Rth2gvdhyE',
 			'slug'=> 'mischa-daams'
 		),
 		'david-de-tscharner' => array(
@@ -53,6 +56,7 @@
 			'file'=> 'contents/david.md',
 			'thumb'=> 'david.png',
 			'type'=> 'video',
+			'yt_id' => '1Rth2gvdhyE',
 			'slug'=> 'david-de-tscharner'
 		),
 		'fabien-leaustic' => array(
@@ -60,6 +64,7 @@
 			'file'=> 'contents/fabien.md',
 			'thumb'=> 'fabien.png',
 			'type'=> 'video',
+			'yt_id' => '1Rth2gvdhyE',
 			'slug'=> 'fabien-leaustic'
 		),
 		'jacques-perconte' => array(
@@ -67,6 +72,7 @@
 			'file'=> 'contents/jacques.md',
 			'thumb'=> 'jacques.png',
 			'type'=> 'video',
+			'yt_id' => '1Rth2gvdhyE',
 			'slug'=> 'jacques-perconte'
 		),
 		'helen-evans' => array(
@@ -74,6 +80,7 @@
 			'file'=> 'contents/helen.md',
 			'thumb'=> 'helen.png',
 			'type'=> 'video',
+			'yt_id' => '1Rth2gvdhyE',
 			'slug'=> 'helen-evans'
 		)
 	);
@@ -94,12 +101,21 @@
 			'slug'=> 'un-acces-vers-une-immersion'
 		),
 		'paysage-sonore' => array(
-			'title'=> 'Paysage sonore',
-			'file'=> 'contents/paysage-sonore.md',
-			'thumb'=> 'paysage-sonore.png',
+			'title'=> 'Accès)s( étrange',
+			'file'=> 'contents/acces-etrange.md',
+			'thumb'=> 'acces_etrange.png',
 			'type'=> 'audio',
 			'mp3' => 'audio/paysage-sonore.mp3',
 			'slug'=> 'paysage-sonore'
+		),
+
+		'panorama' => array(
+			'title'=> 'Panorama',
+			'file'=> 'contents/panorama.md',
+			'thumb'=> 'panorama.png',
+			'type'=> 'photo',
+			'slug'=> 'panorama',
+			'gallery' => 'contents/panorama-gallery.md',
 		),
 	);
 
@@ -114,6 +130,7 @@
 	<title>libre accès)s( — paysage fiction</title>
 	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="plyr/plyr.css">
 </head>
 <body class="locked">
 
@@ -140,7 +157,7 @@
 					<div class="slide small" data-start="9" data-end="12">
 						présentent
 					</div>
-					<div class="slide savate" data-start="13" data-end="23">
+					<div class="slide savate title" data-start="13" data-end="23">
 						Libre accès)s(
 					</div>
 					<div class="slide small" data-start="18" data-end="23">
@@ -162,10 +179,13 @@
 				<strong>Play</strong>
 				<span>Pause</span>
 			</button>
-			<p id="audioplayertext"></p>
+			<div id="audioplayertextcontainer"><p id="audioplayertext"></p></div>
 		</div>
 
 		<header id="site-header">
+			<a href="#apropos" class="contentlink" id="aproposlink" data-type='texte'>
+				à propos
+			</a>
 			<h2>Libre accès)s( </h2>
 			<p>
 				Découvrez les coulisses et les artistes du festival accès)s( #18 – paysage fiction. 
@@ -182,16 +202,88 @@
 			 		class="content content-<?= $c['type'] ?>">
 			 		<div>
 			 			<h1><?= $c['title'] ?></h1>
+
+				 		<?php if ($c['type'] == 'video'): ?>
+				 			<div class="playercontainer">
+				 			<div cass="player" id="player-<?= $c['slug'] ?>"  data-plyr-provider="youtube" data-plyr-embed-id="<?= $c['yt_id'] ?>"></div>
+				 			</div>
+				 		<?php endif ?>
+
 			 			<div class="body">
+
 			 				<div class="<?= $c['type'] ?>">
 			 					<?= $Parsedown->text( file_get_contents($c['file']) ); ?>
 			 				</div>
+			 				<?php if ($c['gallery'] != ''): ?>
+			 				
+		 						<?= $Parsedown->text( file_get_contents($c['gallery']) ); ?>
+			 				
+		 					<?php endif ?>
 			 			</div>
 			 			
 			 		</div>
 			 	</article>
 			<?php endforeach ?>
+			<article id="apropos" class="content content-texte">
+		 		<div>
+		 			<h1>À propos</h1>
 
+		 			<div class="body">
+		 				<div class="texte">
+		 					<?= $Parsedown->text( file_get_contents('contents/apropos.md') ); ?>
+		 				</div>
+		 				<div class="gallery">
+		 					<img src="img/jeanne/DSC_0362.JPG" alt="">
+<img src="img/jeanne/DSC_0365.JPG" alt="">
+<img src="img/jeanne/DSC_0367.JPG" alt="">
+<img src="img/jeanne/DSC_0368.JPG" alt="">
+<img src="img/jeanne/DSC_0371.JPG" alt="">
+<img src="img/jeanne/DSC_0379.JPG" alt="">
+<img src="img/jeanne/DSC_0381.JPG" alt="">
+<img src="img/jeanne/DSC_0384.JPG" alt="">
+<img src="img/jeanne/DSC_0390.JPG" alt="">
+<img src="img/jeanne/DSC_0391.JPG" alt="">
+<img src="img/jeanne/DSC_0392.JPG" alt="">
+<img src="img/jeanne/DSC_0396.JPG" alt="">
+<img src="img/jeanne/DSC_0399.JPG" alt="">
+<img src="img/jeanne/DSC_0401.JPG" alt="">
+<img src="img/jeanne/DSC_0407.JPG" alt="">
+<img src="img/jeanne/DSC_0408.JPG" alt="">
+<img src="img/jeanne/DSC_0416.JPG" alt="">
+<img src="img/jeanne/DSC_0417.JPG" alt="">
+<img src="img/jeanne/DSC_0419.JPG" alt="">
+<img src="img/jeanne/DSC_0420.JPG" alt="">
+<img src="img/jeanne/DSC_0421.JPG" alt="">
+<img src="img/jeanne/DSC_0422.JPG" alt="">
+<img src="img/jeanne/DSC_0427.JPG" alt="">
+<img src="img/jeanne/DSC_0428.JPG" alt="">
+<img src="img/jeanne/DSC_0429.JPG" alt="">
+<img src="img/jeanne/DSC_0430.JPG" alt="">
+<img src="img/jeanne/DSC_0436.JPG" alt="">
+<img src="img/jeanne/DSC_0437.JPG" alt="">
+<img src="img/jeanne/DSC_0439.JPG" alt="">
+<img src="img/jeanne/DSC_0440.JPG" alt="">
+<img src="img/jeanne/DSC_0442.JPG" alt="">
+<img src="img/jeanne/DSC_0443.JPG" alt="">
+<img src="img/jeanne/DSC_0445.JPG" alt="">
+<img src="img/jeanne/DSC_0448.JPG" alt="">
+<img src="img/jeanne/DSC_0450.JPG" alt="">
+<img src="img/jeanne/DSC_0452.JPG" alt="">
+<img src="img/jeanne/DSC_0454.JPG" alt="">
+<img src="img/jeanne/DSC_0455.JPG" alt="">
+<img src="img/jeanne/DSC_0460.JPG" alt="">
+<img src="img/jeanne/DSC_0461.JPG" alt="">
+<img src="img/jeanne/DSC_0462.JPG" alt="">
+<img src="img/jeanne/DSC_0463.JPG" alt="">
+<img src="img/jeanne/DSC_0464.JPG" alt="">
+<img src="img/jeanne/DSC_0479.JPG" alt="">
+<img src="img/jeanne/DSC_0487.JPG" alt="">
+<img src="img/jeanne/DSC_0491.JPG" alt="">
+		 				</div>
+		 			</div>
+		 			
+		 		</div>
+		 	</article>
 		</div>
 			
 			
@@ -211,7 +303,7 @@
 
 					<?php foreach ($etudedeterrain as $c): ?>
 						<div class="homelink"  <?= randpos() ?> >
-					 	<a href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>" id="homelink-<?= $c['slug'] ?>"	>
+					 	<a class="contentlink" href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>" id="homelink-<?= $c['slug'] ?>"	>
 					 		<span class="info">[ <?= $c['type'] ?> ]</span>
 					 		<span class="img"><img src="img/althome/<?= $c['thumb'] ?>"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
 					 		<h3><?= $c['title'] ?></h3>
@@ -237,8 +329,8 @@
 					</header>
 
 					<?php foreach ($entretienssouslesoleil as $c): ?>
-						<div class="homelink"  <?= randpos() ?> >
-					 	<a href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
+						<div  class="homelink"  <?= randpos() ?> >
+					 	<a class="contentlink" href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
 					 		<span class="info">[ <?= $c['type'] ?> ]</span>
 					 		<span class="img"><img src="img/althome/<?= $c['thumb'] ?>"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
 					 		<h3><?= $c['title'] ?></h3>
@@ -265,7 +357,7 @@
 					
 					<?php foreach ($horspiste as $c): ?>
 						<div class="homelink"  <?= randpos() ?> >
-					 	<a href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
+					 	<a class="contentlink" href="#<?= $c['slug'] ?>" data-type="<?= $c['type'] ?>" data-mp3="<?= $c['mp3'] ?>">
 					 		<span class="info">[ <?= $c['type'] ?> ]</span>
 					 		<span class="img"><img src="img/althome/<?= $c['thumb'] ?>"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
 					 		<h3><?= $c['title'] ?></h3>
@@ -288,6 +380,7 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/isinviewport.js"></script>
 	<script type="text/javascript" src="js/skrollr.min.js"></script>
+	<script type="text/javascript" src="plyr/plyr.min.js"></script>
 	<script type="text/javascript" src="js/intro.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript">

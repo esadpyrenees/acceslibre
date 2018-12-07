@@ -1,3 +1,6 @@
-<iframe src="https://player.vimeo.com/video/203366087" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-- Réalisation : Julien Bidoret
+Interview : Clara Desperben  
+Captation vidéo : Clara Loustau & Jeanne Hervé-Maley  
+Captation son : Christophe Léon  
+Traduction : Clara Desperbe  
+Sous-titres : Jeanne Hervé-Maley  
+Montage : Clara Desperben & Christophe Léon 
