@@ -1,18 +1,19 @@
 $(function(){
-    
+
+
 
     /* ------------------------------------------------------------
     ---------------------------------------------------------------
     Skrollr
     ---------------------------------------------------------------
-    -------------------------------------------------------------*/ 
+    -------------------------------------------------------------*/
 
     var skrollrinit = true;
     var sk = skrollr.init({
         // forceHeight:false,
         constants: {
             offsetstart: function() {
-                var val = $(document).height() - $(window).height() 
+                var val = $(document).height() - $(window).height()
                 if (skrollrinit) {
                     skrollrinit = false;
                     val = val / 2
@@ -30,7 +31,7 @@ $(function(){
     ---------------------------------------------------------------
     Texte
     ---------------------------------------------------------------
-    -------------------------------------------------------------*/ 
+    -------------------------------------------------------------*/
 
     var texte = {
         limit: window.innerHeight / 2,
@@ -38,7 +39,7 @@ $(function(){
         init: function(el_id){
 
             clearInterval(texte.check_interval);
-            
+
             var images_refs = [],
                 aside_images = [],
                 el = document.querySelector(el_id);
@@ -56,8 +57,8 @@ $(function(){
                 images_refs.push(span);
                 // insertion de l’élément référence dans le DOM avant l’image
                 image.parentNode.insertBefore(span, image)
-                
-                
+
+
                 // déplacement de l’image vers aside
                 // on crée une figure pour mettre l’image ET la légende
                 var figure = document.createElement('figure');
@@ -73,14 +74,14 @@ $(function(){
                 // on caceh l’image originale
                 image.style.display='none';
             });
-            
+
             // check des images dans le viewport
             texte.check_interval = setInterval(function(){
                 for (var i = 0; i < images_refs.length; i++) {
 
                     var span = images_refs[i];
                     var idx = span.getAttribute('rel');
-              
+
                     if(isElementInViewport(span, texte.limit) ){
                         aside_images.forEach( function(element, index) {
                             element.classList.remove('visible');
@@ -99,15 +100,15 @@ $(function(){
             clearInterval(texte.check_interval);
 
         }
-    }        
-    
+    }
+
 
 
     /* ------------------------------------------------------------
     ---------------------------------------------------------------
     Audio
     ---------------------------------------------------------------
-    -------------------------------------------------------------*/ 
+    -------------------------------------------------------------*/
 
     var audio = {
         element: document.querySelector('#audio'),
@@ -128,17 +129,18 @@ $(function(){
 
         newaudio: function(mp3, textelement){
             audio.element.pause();
+            document.querySelector('#audioplayer').className='';
             audio.element.setAttribute('src', mp3 );
-            audio.element.addEventListener('canplaythrough', function() { 
+            audio.element.addEventListener('canplaythrough', function() {
                 console.log('canplaythrough')
                 audio.button.classList.add('playing');
                 audio.button.classList.remove('paused');
                 audio.element.play();
             }, false);
-            audio.element.addEventListener('ended', function() { 
+            audio.element.addEventListener('ended', function() {
                audio.element.setAttribute('src', "" );
             }, false);
-            
+
             var txt = textelement.text();
             audio.textcontainer.classList.remove('marquee');
             audio.texte.innerHTML = txt;
@@ -165,14 +167,16 @@ $(function(){
     ---------------------------------------------------------------
     Audio
     ---------------------------------------------------------------
-    -------------------------------------------------------------*/ 
+    -------------------------------------------------------------*/
 
     var video = {
         player: null,
 
-        newvideo: function(element){
+        newvideo: function(href){
+            var id = '#player-' + href.replace('#', '');
 
-            video.player = new Plyr('#player-' + element);
+            video.player = new Plyr(id);
+
             video.player.on('play', event => {
                 const instance = event.detail.plyr;
                 if (audio.element) {
@@ -180,8 +184,9 @@ $(function(){
                 }
             })
         },
+
         destroy:function(){
-            if(video.player) {
+            if(video.player != null) {
                 video.player.pause();
                 video.player.destroy();
             }
@@ -190,45 +195,52 @@ $(function(){
 
 
 
+
+
+
     /* ------------------------------------------------------------
     ---------------------------------------------------------------
     Navigation
     ---------------------------------------------------------------
-    -------------------------------------------------------------*/ 
+    -------------------------------------------------------------*/
 
     // liens navigation principale
     $('.contentlink').on('click', function(e){
         e.stopPropagation();
         e.preventDefault();
+
         var $this = $(this),
             type = $this.attr('data-type'),
             href = $this.attr('href'),
             $target = $(href);
 
-        // cas de l’audio
+        // cas de la vidéo
+        if (type == "video") {
+            video.destroy();
+            video.newvideo( href );
+        } else {
+            video.destroy();
+        }
 
+        // cas de l’audio
         if (type == "audio") {
-            audio.newaudio( $this.attr('data-mp3'), $this.find('.audioinfo'));
+            audio.newaudio( $this.attr('data-mp3'), $this.find('.audioinfo') );
             return false;
         }
 
+        // cas du texte
         if (type == "texte") {
-            texte.init(href);
+            texte.init( href );
         } else {
             texte.destroy();
         }
 
 
-        if (type == "video") {
-            video.destroy();
-            video.newvideo(href.replace('#', ''));
-        } else {
-            video.destroy();
-        }
+
 
         // cas des pages texte ou video
 
-        
+
         var $is_article_visible = $('article.visible');
         $is_article_visible.addClass('hidden');
 
@@ -242,16 +254,16 @@ $(function(){
 
                 $target.slideDown('fast', function() {
                     $('#aside, #content').removeClass('hidden');
-                    
+
                     $(this).removeClass('hidden');
 
                     $(this).addClass('visible');
                     sk.refresh();
-                    
-                });   
+
+                });
             });
         });
-        
+
     });
 
 
@@ -259,5 +271,5 @@ $(function(){
     // responsive video
 
     $('iframe').wrap('<div class="videoWrapper"></div>');
-    
+
 })
