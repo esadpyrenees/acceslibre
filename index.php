@@ -14,7 +14,8 @@
 			'thumb'=> 'charles.png',
 			'type'=> 'video',
 			'yt_id' => 'PbZjzjqm6CQ',
-			'slug'=> 'charles-carcopino'
+			'slug'=> 'charles-carcopino',
+			'gallery' => ''
 		),
 		'pauline' => array(
 			'title'=> 'Pauline Chasseriaud',
@@ -22,7 +23,8 @@
 			'thumb'=> 'pauline.png',
 			'type'=> 'audio',
 			'mp3' => 'audio/pauline-chasseriaud.mp3',
-			'slug'=> 'pauline-chasseriaud'
+			'slug'=> 'pauline-chasseriaud',
+			'gallery' => ''
 		),
 		'rapdm' => array(
 			'title'=> 'Rencontre avec des petites mains',
@@ -30,7 +32,8 @@
 			'thumb'=> 'rapdm.png',
 			'type'=> 'video',
 			'yt_id' => 'Uu3p_wvyVmE',
-			'slug'=> 'rapdm'
+			'slug'=> 'rapdm',
+			'gallery' => ''
 		),
 		'quitterie' => array(
 			'title'=> 'Quitterie Charpentier',
@@ -38,7 +41,8 @@
 			'thumb'=> 'quitterie.png',
 			'type'=> 'audio',
 			'mp3' => 'audio/quitterie-charpentier.mp3',
-			'slug'=> 'quitterie-charpentier'
+			'slug'=> 'quitterie-charpentier',
+			'gallery' => ''
 		)
 	);
 
@@ -49,7 +53,8 @@
 			'thumb'=> 'mischa.png',
 			'type'=> 'video',
 			'yt_id' => 'oNmUq1fsj7M',
-			'slug'=> 'mischa-daams'
+			'slug'=> 'mischa-daams',
+			'gallery' => ''
 		),
 		'david-de-tscharner' => array(
 			'title'=> 'David de Tscharner',
@@ -57,7 +62,8 @@
 			'thumb'=> 'david.png',
 			'type'=> 'video',
 			'yt_id' => 'fllkZOyh43Y',
-			'slug'=> 'david-de-tscharner'
+			'slug'=> 'david-de-tscharner',
+			'gallery' => ''
 		),
 		'fabien-leaustic' => array(
 			'title'=> 'Fabien Léaustic',
@@ -65,7 +71,8 @@
 			'thumb'=> 'fabien.png',
 			'type'=> 'video',
 			'yt_id' => 'vYRr0TgDHTE',
-			'slug'=> 'fabien-leaustic'
+			'slug'=> 'fabien-leaustic',
+			'gallery' => ''
 		),
 		'jacques-perconte' => array(
 			'title'=> 'Jacques Perconte',
@@ -73,7 +80,8 @@
 			'thumb'=> 'jacques.png',
 			'type'=> 'video',
 			'yt_id' => 'MMx3zE2SGiE',
-			'slug'=> 'jacques-perconte'
+			'slug'=> 'jacques-perconte',
+			'gallery' => ''
 		),
 		'helen-evans' => array(
 			'title'=> 'Helen Evans',
@@ -81,7 +89,8 @@
 			'thumb'=> 'helen.png',
 			'type'=> 'video',
 			'yt_id' => 'tdVfHXl6gtc',		
-			'slug'=> 'helen-evans'
+			'slug'=> 'helen-evans',
+			'gallery' => ''
 		)
 	);
 
@@ -91,14 +100,16 @@
 			'file'=> 'contents/feu-rouge.md',
 			'thumb'=> 'feu-rouge.png',
 			'type'=> 'texte',
-			'slug'=> 'feu-rouge'
+			'slug'=> 'feu-rouge',
+			'gallery' => ''
 		),
 		'immersion' => array(
 			'title'=> 'Immersion dans le paysage',
 			'file'=> 'contents/immersion.md',
 			'thumb'=> 'immersion.png',
 			'type'=> 'texte',
-			'slug'=> 'un-acces-vers-une-immersion'
+			'slug'=> 'un-acces-vers-une-immersion',
+			'gallery' => ''
 		),
 		'paysage-sonore' => array(
 			'title'=> 'Accès)s( étrange',
@@ -106,7 +117,8 @@
 			'thumb'=> 'acces_etrange.png',
 			'type'=> 'audio',
 			'mp3' => 'audio/paysage-sonore.mp3',
-			'slug'=> 'paysage-sonore'
+			'slug'=> 'paysage-sonore',
+			'gallery' => ''
 		),
 
 		'panorama' => array(
