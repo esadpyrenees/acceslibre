@@ -38,6 +38,13 @@ a { color: inherit; text-decoration: none; }
     height: calc(100vh + 2em);
     position: relative;
     background: black url("img/preloader.gif") no-repeat center center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 #video video{
