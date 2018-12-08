@@ -41,7 +41,7 @@ $(function(){
     var vw = $(window).width();
     var skrollrinit = true;
 
-    
+
     if(vw>450){
         var sk = skrollr.init({
             // forceHeight:false,
@@ -168,9 +168,11 @@ $(function(){
         newaudio: function(mp3, textelement){
             audio.element.pause();
             document.querySelector('#audioplayer').className='';
+            audio.element.setAttribute('preload', 'auto');
             audio.element.setAttribute('src', mp3 );
+            audio.element.load();
             audio.element.addEventListener('canplaythrough', function() {
-                console.log('canplaythrough')
+                console.log('canplaythrough');
                 audio.button.classList.add('playing');
                 audio.button.classList.remove('paused');
                 audio.element.play();
