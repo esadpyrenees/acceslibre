@@ -1,30 +1,66 @@
 $(function(){
 
+    // TZZZ
 
+    function changeIntro() {
+
+        var texts = [
+            'Découvrez les coulisses du festival accès)s( #18',
+            'Si rien ne se passe, continuez à scroller',
+            'Un média numérique autour du festival accès)s( #18',
+            'Un workshop sous <i>caféine</i>',
+            'Un paysage de fictions',
+            'Fond vert power',
+            'Essayer encore, rater encore, rater mieux',
+            'WOAW! World open acces)s( web',
+            'Méthodologie, gestion de projet : ✓'
+        ]
+        var randtext = texts[Math.floor(Math.random() * texts.length)];
+
+        $('#intro_libre_acces').html(randtext);
+    }
+
+    
+    
+
+
+    // loop with random delay
+    (function loop() {
+        var rand = Math.round(Math.random() * 5000 ) + 5000;
+        setTimeout(function() {
+                changeIntro();
+                loop();  
+        }, rand);
+    }());
 
     /* ------------------------------------------------------------
     ---------------------------------------------------------------
     Skrollr
     ---------------------------------------------------------------
     -------------------------------------------------------------*/
-
+    var vw = $(window).width();
     var skrollrinit = true;
-    var sk = skrollr.init({
-        // forceHeight:false,
-        constants: {
-            offsetstart: function() {
-                var val = $(document).height() - $(window).height()
-                if (skrollrinit) {
-                    skrollrinit = false;
-                    val = val / 2
+
+    
+    if(vw>450){
+        var sk = skrollr.init({
+            // forceHeight:false,
+            constants: {
+                offsetstart: function() {
+                    var val = $(document).height() - $(window).height();
+                    if (skrollrinit) {
+                        skrollrinit = false;
+                        val = val / 2
+                    }
+                    return val;
+                },
+                offsetend: function() {
+                    return $(document).height() + 500 ;
                 }
-                return val;
-            },
-            offsetend: function() {
-                return $(document).height() + 500 ;
             }
-        }
-    });
+        });
+    }
+
 
 
     /* ------------------------------------------------------------
@@ -83,11 +119,13 @@ $(function(){
                     var idx = span.getAttribute('rel');
 
                     if(isElementInViewport(span, texte.limit) ){
+                        span.style.backgroundColor = 'blue'
                         aside_images.forEach( function(element, index) {
                             element.classList.remove('visible');
                         });
                         aside_images[idx].classList.add('visible');
                     } else {
+                        span.style.backgroundColor = 'black'
                         aside_images[idx].classList.remove('visible');
                     }
                 }
@@ -165,14 +203,14 @@ $(function(){
 
     /* ------------------------------------------------------------
     ---------------------------------------------------------------
-    Audio
+    Vidéo
     ---------------------------------------------------------------
     -------------------------------------------------------------*/
 
     var video = {
         player: null,
 
-        newvideo: function(href){
+        new: function(href){
             var id = '#player-' + href.replace('#', '');
 
             video.player = new Plyr(id);
@@ -193,6 +231,34 @@ $(function(){
         }
     }
 
+    /* ------------------------------------------------------------
+    ---------------------------------------------------------------
+    Gallery
+    ---------------------------------------------------------------
+    -------------------------------------------------------------*/
+
+    var gallery = {
+        owl: null,
+
+        new: function(href){
+
+            var id = href + '-gallery';
+            console.log(id)
+            $(id).owlCarousel({
+                items:1,
+                loop:true,
+                dots:false,
+                nav:true
+            });
+
+        },
+
+        destroy:function(){
+            if(gallery.owl != null) {
+                // gallery.owl.destroy();
+            }
+        }
+    }
 
 
 
@@ -211,15 +277,26 @@ $(function(){
 
         var $this = $(this),
             type = $this.attr('data-type'),
+            has_gallery = $this.attr('data-gallery') ? true : false,
             href = $this.attr('href'),
             $target = $(href);
 
         // cas de la vidéo
         if (type == "video") {
             video.destroy();
-            video.newvideo( href );
+            video.new( href );
         } else {
             video.destroy();
+        }
+
+        console.log('has_gallery ' + has_gallery)
+        // cas d’une galerie
+        if (has_gallery) {
+
+            gallery.destroy();
+            gallery.new( href );
+        } else {
+            gallery.destroy();
         }
 
         // cas de l’audio
@@ -243,6 +320,7 @@ $(function(){
 
         var $is_article_visible = $('article.visible');
         $is_article_visible.addClass('hidden');
+        $is_article_visible.css('display', 'none');
 
         $('#skrollr-body').animate({
             scrollTop: 0

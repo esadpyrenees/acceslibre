@@ -11,17 +11,5 @@ Le résultat a pris la forme d’un site web, créé pour documenter et diffuser
 Paysage-fiction est l’exposition de la 18<sup>e</sup> édition du festival accès)s(. Elle emmène le spectateur en voyage à travers des installations et des vidéos immersives, augmentées et interactives qui évoquent la nature et le paysage à notre ère technologique. 
 Cette exposition a été réalisée en co-production avec le Tetris (salle de spectacle et lieu de création au Havre), dans le cadre de « Un Été au Havre ».
 
-
-### L’équipe
-
-#### Élèves participants 
-Clara Loustau, Quentin Laperche-Calvo, Lisa Clamens, Jeanne Hervé Maley, Christophe Léon, César Hélion-Joly, Clara Desperben, Claire Lhermitte, Léa Fournier, Thibault Maio, Maxime Sabaté, Naïm Dufour, Sybille Clemente, Thibaut Bourgeois, Thomas Rouillon, Li Wang.
-
-#### Intervenante invitée
-Sarah Taurinya Brown
-
-#### Enseignants du pôle Nouveaux médias 
-Julien Bidoret, Vincent Meyer, Jean-Paul Labro, Julien Drochon, Jean Marie Blanchet.
-
-#### Introduction vidéo
-Montage : Clara Loustau. Musique : Nuh Nuh, [Joasihno](https://joasihno.bandcamp.com/)
+### Code source
+Le code (approximatif) du site web est disponible sur [github](https://github.com/jbidoret/acceslibre/)

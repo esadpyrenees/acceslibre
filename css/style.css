@@ -6,7 +6,7 @@ body{
     margin:0;
     overflow-x: hidden;
     font-family: 'Ruda';
-    color: #444;
+    color: rgba(0,0,0,.7);
 }
 body.locked { overflow: hidden; }
 
@@ -17,7 +17,7 @@ ul, ol { list-style: none; }
 
 /* ------------------------------------------------ commons */
 
-a { color: black; text-decoration: none; }
+a { color: inherit; text-decoration: none; }
 .ruda { font-family: Ruda; }
 .savate{
     font-family: 'Savate';
@@ -74,7 +74,7 @@ a { color: black; text-decoration: none; }
 }
 
 .small{
-    font-size: .75em;
+    font-size: .65em;
 }
 .slide{
     visibility: hidden;
@@ -84,12 +84,32 @@ a { color: black; text-decoration: none; }
     visibility: visible;
 }
 .slide.title{
-    animation-name: glitch-anim-1;
+    /* animation-name: glitch-anim-1;
     animation-duration: 8s;
     animation-delay: 13s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
-    opacity: 1;
+    opacity: 1; */
+    font-size: 1.25em;
+}
+/* .slide.credits{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+    transform: rotate(-90deg) translate(-100vh, 100vw);
+    display: block;
+    font-size: .65em;
+    visibility: visible;
+    margin: -1em 0 0 -2em;
+} */
+/* alt */
+.slide.credits {
+    position: absolute;
+    bottom: 3em;
+    display: block;
+    font-size: .5em;
+    margin: 0;
 }
 .flex {
     display: flex;
@@ -158,8 +178,7 @@ button.replay{
 
 /* ------------------------------------------------ titrage home */
 
-#titre_libre_acces {font-size: 2em;
-                    margin-top: 0;}
+
 
 
 /* ------------------------------------------------ home */
@@ -193,7 +212,7 @@ button.replay{
 
 #mountain3 {
     padding-left: 50vw;
-    width: 225vw;
+    width: 255vw;
     /* bottom:50vh; */
     top: 10vh;
 }
@@ -209,12 +228,6 @@ button.replay{
     /* bottom:0; */
     top: 60vh ;
 }
-
-/* #mountain1 .line { background: url("img/mountain1.svg"); padding-top: 10vh; } */
-/* #mountain2 .line { background: url("img/mountain2.svg"); padding-top: 5%; } */
-/* #mountain3 .line { background: url("img/mountain3.svg"); padding-top: 5%; } */
-
-
 
 .line {
     white-space: nowrap;
@@ -271,8 +284,8 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     transform-origin: center center;
     animation-play-state: paused;
     display: block;
+    filter: grayscale(1) contrast(200%);
 }
-.homelink img:nth-child(2) { opacity: 0; position: absolute; top:0; left: 0;}
 .homelink .info{
     position: absolute;
     z-index: 2;
@@ -282,10 +295,11 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
-.homelink a:hover img:nth-child(1) { opacity: 0; }
-.homelink a:hover img:nth-child(2) { opacity: 1; }
+.homelink a:hover img {filter: none; }
 
 .audioinfo {display: none;}
+
+
 
 /* ------------------------------------------------ player audio */
 
@@ -303,6 +317,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 }
 #audioplayertextcontainer {
     animation: none ;
+    padding-right: 100vw;
 }
 #audioplayertextcontainer.marquee {
     animation: scrolling 25000ms infinite linear;
@@ -317,6 +332,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     letter-spacing: 0.025em;
     font-size: .85em;
     white-space: nowrap;
+    padding-right: 100vw;
 }
 #audio[src=""] ~ button { display: none; }
 
@@ -358,7 +374,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 #aproposlink {
     position: absolute;
     right: 20px;
-    background-color: red;
+    top: 3em;
     background: url("img/apropos-survol.png") no-repeat;
     background-size: contain;
     width: 200px;
@@ -366,28 +382,40 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     text-indent: 250px;
     white-space: nowrap;
     filter: grayscale(1) contrast(200%);
-
+    z-index: 999;
 }
+
 #aproposlink:hover {
     filter: none;
 }
 
 #site-header {
     position: relative;
-    position: sticky;
+    /* position: sticky; */
     padding: 3em;
     top: 0;
 }
 #site-header h2 {
     top: 0;
+    font-size: 2em;
+    margin-top: 0;
+    color: black;
 }
 
+#intro_libre_acces { position: absolute; }
+
+#content { 
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 3em 3em;
+}
 .content {
     display: none;
     overflow: auto;
+    flex:2 ;
 }
 .content > div {
-    padding: 0 3em 3em;
     visibility: hidden;
 }
 .content.visible > div{
@@ -400,6 +428,9 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     display: none;
 }
 
+.content a {
+    text-decoration: underline;
+}
 
 .content p,
 .content h1,
@@ -410,32 +441,12 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     margin: 1em 0 .25em;
 }
 .content-texte .texte {
-    float: right;
-    max-width: 36em;
-    max-width:calc(50% - 20px);
+    max-width: 40em;
+    min-width: 28em;
+    padding-right: 80px;
 }
-
-.content-texte .gallery {
-
-    /* max-width: calc(100% - 36em - 40px); */
-    /* padding-right: 40px; */
-    /* column-count: 2;
-    column-gap: 40px; */
-    /* display: flex;
-    flex-wrap: wrap; */
-    margin-right: -40px;
-}
-.content-texte .gallery p {
-    margin:0;
-    display: flex;
-    flex-wrap: wrap;
-}
-.content-texte .gallery img {
-    max-width: 100%;
-    width: calc(25% - 45px);
-    margin: 0 40px 40px 0;
-    display: inline-block;
-
+.content h4 + p {
+    margin-top: 0;
 }
 
 /* texte */
@@ -444,28 +455,25 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     line-height: 1.5;
 }
 .content h1 {
-    font-size: 3em;
+    font-size: 2em;
+    font-family: "Savate";
     line-height: 1.2;
-    margin: 2rem auto .5rem auto;
+    margin: 2rem auto 1rem auto;
     color: black;
     max-width: 1280px !important;
 }
 
 #aside{
     position: sticky;
-    width:100%;
-    max-width: calc( 1280px - 36em );
-    min-width: calc( 33% );
-    right: 0;
-    top: 0;
+    top: 2em;
+    flex:1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em;
     height: 100vh;
     flex-direction: column;
-    float: right;
     z-index: -1;
+    order: 2;
     visibility: visible;
 }
 #aside.hidden{ visibility: hidden; }
@@ -478,7 +486,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     position: absolute;
     opacity: 0;
     transition: all 250ms ease-out;
-    width: calc(100% - 80px);
+    width: 100%;
 }
 #aside figure img { width: 100% }
 
@@ -487,7 +495,42 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     transition: all 250ms ease-out;
 }
 
+/* à propos */
 
+#apropos .texte {
+    display: flex;
+    max-width: 60em;
+    min-width: 28em;
+}
+#apropos .texte > :first-child{
+    flex: 5;
+    padding-right: 80px;
+}
+#apropos .texte > :last-child{
+    flex: 2;
+}
+
+/* gallery */
+.gimg p {
+    font-size: .85em;
+}
+.gallery { margin-top: 1em; }
+
+.owl-nav {
+    position: absolute;
+    top: 50%;
+    font-size: 3em;
+    color: white;
+    width: 100%;
+}
+.owl-prev {
+    position: absolute;
+    left: .75em;
+}
+.owl-next {
+    position: absolute;
+    right: .75em;
+}
 /* ------------------------------------------------ video content */
 
 
@@ -505,84 +548,80 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     height: 100%;
 }
 .plyr__poster {
-    background-color: black;
+    background-color: white;
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
 }
-.content > div .playercontainer { background-color: black; margin: 0 -3em; position: relative;}
-.body .video,
-.plyr {
-    max-width: 1280px !important;
-    margin: 0 auto;
-}
+
 /* ------------------------------------------------ media */
 
 @media (max-width: 450px) {
+    
+    #nav,
+    .mountain,
+    .line {
+        position: static !important; 
+        transform: none !important; 
+        width: auto !important; 
+        bottom: auto !important; 
+        top:auto !important;
+        height: auto !important;
+        padding: 0 !important;;
+    }
 
-    .content div { padding: 200px 20px 20px; font-size: .85em;}
-    .line header { padding: 20px 20px; }
-    #site-header { padding: 20px 20px; }
+    .mountain {
+       /*  border-top: 8px solid black;
+        padding-top: 1em; */
+    }
+    .line > * { display: block; width: auto !important; }
+    .homelink {margin: 1em 0 !important; width: auto !important}
+    .homelink img {
+        max-width: 70%;
+        margin: 0 auto;
+    }
+    .line header h2 { font-size: 3em; color: black; white-space: normal; line-height: 1; }
+    #site-header {}
+    header p { max-width: 100%; }
+    #aproposlink {
+        /* position: static;
+        width: auto;
+        background: none;
+        padding: 0 20px; */
+        position: absolute;
+        background: none;
+        width: 30px;
+        padding: 0;
+        z-index: 999;
+        height: 30px;
+        right: 10px;
+    }
+    #aproposlink::after {
 
-}
-
-
-
-
-
-@keyframes glitch-anim-1 {
-    0% {
-        opacity: 1;
-        -webkit-clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
-        clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
-    }
-    1% {
-        -webkit-clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
-        clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
-    }
-    2% {
-        -webkit-clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
-        clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
-    }
-    3% {
-        -webkit-clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
-        clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
-    }
-    4% {
-        -webkit-clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
-        clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
-    }
-    5% {
-        -webkit-clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
-        clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
-    }
-    6% {
-        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
-        clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
-    }
-    7% {
-        -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
-        clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
-    }
-    8% {
-        -webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
-        clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
-    }
-    9% {
-        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
-        clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
-    }
-    10% {
-        -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
-        clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
-    }
-    10.9% {
-        opacity: 1;
-    }
-    11%, 100% {
-        opacity: 1;
-        /* transform: translate3d(0,0,0); */
-        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0px 0%);
+        content: "?";
+        display: block;
+        /* color: rgba(255,255,255,.6); */
+        position: absolute;
+        top: 0;
+        left: -240px;
+        font-weight: bold;
+        font-size: 1.5em;
+        line-height: 30px;
 
     }
+
+    #site-header,
+    .line header,
+    #content {
+        padding: 20px;
+    }
+    
+    #intro_libre_acces { position: static; min-height: 6em; }
+ /*    .content > div {padding: 20px;} */
+
+    #aside { display: none; }
+    .content-texte .texte { min-width: 0; padding: 0; }
+    .content-texte .texte span.ref { display: none; }
+    .content-texte .texte img { display: block !important; margin: 1em 0; }
+    
 }
