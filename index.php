@@ -148,14 +148,13 @@
 </head>
 <body class="locked" 
 	data-0="background:rgb(255,255,255)"
-	data-5000="background:rgb(255,255,255)"
-	data-6000="background:rgb(249,131,255)"
-	data-7000="background:rgb(102,255,222)"
-	data-8000="background:rgb(128,29,240)"
-	data-9000="background:rgb(64,26,255)"
-	data-10000="background:rgb(13,41,255)"
-	data-11000="background:rgb(246,0,255)"
-	>
+	data-10000="background:rgb(255,255,255)"
+	data-11000="background:rgb(249,131,255)"
+	data-12000="background:rgb(102,255,222)"
+	data-13000="background:rgb(128,29,240)"
+	data-14000="background:rgb(64,26,255)"
+	data-15000="background:rgb(13,41,255)"
+	data-16000="background:rgb(246,0,255)">
 
 
 		<div id="video">
