@@ -623,5 +623,11 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     .content-texte .texte { min-width: 0; padding: 0; }
     .content-texte .texte span.ref { display: none; }
     .content-texte .texte img { display: block !important; margin: 1em 0; }
+
+    .flex {
+        align-items: flex-start;
+        justify-content: flex-start;
+        height: 100%;
+    }
     
 }
