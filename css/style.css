@@ -556,7 +556,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 }
 .plyr__poster {
     background-color: white;
-    background-size: auto;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
