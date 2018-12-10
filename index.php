@@ -190,7 +190,6 @@
 <html>
 <head>
 	<?php 
-	echo "<!-- " . $current_content['title'] . " -->\n";
 	echo "<!-- Libre accès)s( -->\n";
 	echo "	<!-- Un regard singulier porté par les étudiants du pôle Nouveaux médias de l’ÉSAD Pyrénées sur le festival accès)s( #18, Paysage fiction -->\n\n";
 
