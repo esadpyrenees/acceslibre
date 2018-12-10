@@ -179,7 +179,6 @@ $(function(){
             audio.element.setAttribute('src', mp3 );
             audio.element.load();
             audio.element.addEventListener('canplaythrough', function() {
-                console.log('canplaythrough');
                 audio.button.classList.add('playing');
                 audio.button.classList.remove('paused');
                 audio.element.play();
