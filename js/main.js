@@ -124,10 +124,11 @@ $(function(){
                     var idx = span.getAttribute('rel');
 
                     if(isElementInViewport(span, texte.limit) ){
-                        span.style.backgroundColor = 'blue'
-                        aside_images.forEach( function(element, index) {
-                            element.classList.remove('visible');
-                        });
+                        span.style.backgroundColor = 'blue';
+
+                        for (var i = 0; i < aside_images.length; i++) {
+                            aside_images[i].classList.remove('visible');
+                        }
                         aside_images[idx].classList.add('visible');
                     } else {
                         span.style.backgroundColor = 'black'
@@ -138,7 +139,8 @@ $(function(){
         },
         destroy: function(){
             var aside = document.querySelector('#aside');
-
+            $('.ref').remove(); // suppression des références à l’intérieur des textes
+            $('.texte img').css('display', 'initial'); // suppression du display none sur les images à l’intérieur du textes
             aside.innerHTML = '';
             clearInterval(texte.check_interval);
 
@@ -297,7 +299,9 @@ $(function(){
             has_gallery = $target.attr('data-gallery') ? true : false;
 
         // gestion de l’historique
+        // transformation du hash (#misha-daams) en search (?misha-daams)
         var url = '?' + href.substring(1);
+        // création d’une entrée d’historique, en passant le hash (#misha-daams) et l’URL (?misha-daams)
         history.pushState({hash: href}, "", url);
 
 
@@ -397,7 +401,6 @@ $(function(){
     // élimine le premier caractère (?) : .substring(1)
     // prend uniquement le premier paramètre : split('&')[0]
     var srch = window.location.search.substring(1).split('&')[0];
-    console.log(srch)
 
     // hash management (visite d’une page qui contient un ?hash)
     if(srch != ""){

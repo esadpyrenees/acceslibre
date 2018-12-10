@@ -19,15 +19,15 @@ var titles = document.querySelectorAll('.slide'),
 window.scrollTo(0,0); 
 
 // build timestamps
-titles.forEach( function(element, index) {
-    if (element.getAttribute('data-start') != "") {
+for (var i = 0; i < titles.length; i++) {
+    if (titles[i].getAttribute('data-start') != "") {
         timestamps.push({
-            start: +element.getAttribute('data-start'),
-            end: +element.getAttribute('data-end'),
-            elm: element
+            start: +titles[i].getAttribute('data-start'),
+            end: +titles[i].getAttribute('data-end'),
+            elm: titles[i]
         });
     }
-});
+}
 
 
 setTimeout(function(){
