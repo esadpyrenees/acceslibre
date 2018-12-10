@@ -296,7 +296,8 @@ $(function(){
             type = $target.attr('data-type'),
             has_gallery = $target.attr('data-gallery') ? true : false;
 
-        history.pushState({hash: href}, "", href);
+        var url = '?' + href.substring(1);
+        history.pushState({hash: href}, "", url);
 
         // cas de la vidéo
         if (type == "video") {
@@ -335,8 +336,11 @@ $(function(){
 
         // gestion de l’affichage des contenus
 
+        // on masque le précédent contenu
         $(current.content_id).addClass('hidden').css('display', 'none');
 
+
+        // séquence d’animation du scroll
         var $skbody = $('#skrollr-body');
 
         $skbody.animate({
@@ -347,13 +351,16 @@ $(function(){
                 scrollTop: $skbody.offset().top
             }, 'slow', function(){
 
+                // pas d’affichage si audio
                 if (type=='audio') return false;
 
-                $target.slideDown('fast', function() {
+                $target.slideDown('slow', function() {
                     $('#aside, #content').removeClass('hidden');
                     $(this).removeClass('hidden');
                     $(this).addClass('visible');
-                    if (sk != null) sk.refresh();
+                    if (sk != null) {
+                        sk.refresh();
+                    }
                 });
 
                 current.content_type = type;
@@ -371,11 +378,18 @@ $(function(){
         }
     });
 
+
+    // chargement initial
+    // recherche si un paramètre est 
+    var srch = window.location.search.substring(1);
+    console.log(srch)
+
     // hash management (visite d’une page qui contient un #hash)
-    if(window.location.hash != ""){
-        if($(window.location.hash).length){
+    if(srch != ""){
+        var hash = "#" + srch;
+        if($(hash).length){
             switchToHome(); // in intro.js
-            displayContent(window.location.hash);
+            displayContent(hash);
         } else {
             history.replaceState({hash: ""}, document.title, document.location.href);
         }

@@ -7,6 +7,8 @@
     	return ' style="margin:' . rand(20, 150) . 'px 0 0 ' . rand(0, 90) . 'px"';
     }
 
+    // Stockage des contenus
+
 	$etudedeterrain = array(
 		'charles-carcopino' => array(
 			'title'=> 'Charles Carcopino',
@@ -15,7 +17,9 @@
 			'type'=> 'video',
 			'yt_id' => 'PbZjzjqm6CQ',
 			'slug'=> 'charles-carcopino',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/charles-carcopino.jpg',
+			'og_description' => 'Entretien avec Charles Carcopino, commissaire du festival accès)s( #18, Paysage fiction.'
 		),
 		'pauline' => array(
 			'title'=> 'Pauline Chasseriaud',
@@ -24,7 +28,9 @@
 			'type'=> 'audio',
 			'mp3' => 'audio/pauline-chasseriaud.mp3',
 			'slug'=> 'pauline-chasseriaud',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/pauline-chasseriaud.jpg',
+			'og_description' => 'Entretien avec Pauline Chasseriaud, directrice de l’association accès)s( cultures électroniques autour du festival accès)s( #18, Paysage fiction.'
 		),
 		'rapdm' => array(
 			'title'=> 'Rencontre avec des petites mains',
@@ -33,7 +39,9 @@
 			'type'=> 'video',
 			'yt_id' => 'Uu3p_wvyVmE',
 			'slug'=> 'rapdm',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/rapdm.jpg',
+			'og_description' => 'Rencontre avec les “petites mains” de l’exposition Paysage fiction du festival accès)s( #18, étudiants de l’École supérieure d’art des Pyrénées en stage au Bel Ordinaire.'
 		),
 		'quitterie' => array(
 			'title'=> 'Quitterie Charpentier',
@@ -42,7 +50,9 @@
 			'type'=> 'audio',
 			'mp3' => 'audio/quitterie-charpentier.mp3',
 			'slug'=> 'quitterie-charpentier',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/quitterie-charpentier.jpg',
+			'og_description' => 'Entretien avec Quitterie Charpentier, chargée de communication et de médiation de l’association accès)s( cultures électroniques autour du festival accès)s( #18, Paysage fiction.'
 		)
 	);
 
@@ -54,7 +64,9 @@
 			'type'=> 'video',
 			'yt_id' => 'oNmUq1fsj7M',
 			'slug'=> 'mischa-daams',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/mischa-daams.jpg',
+			'og_description' => 'Entretien avec Mischa Daams, artiste néerlandais, invité de l’exposition Paysage fiction du festival accès)s( #18.'
 		),
 		'david-de-tscharner' => array(
 			'title'=> 'David de Tscharner',
@@ -63,7 +75,9 @@
 			'type'=> 'video',
 			'yt_id' => 'fllkZOyh43Y',
 			'slug'=> 'david-de-tscharner',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/david-de-tscharner.jpg',
+			'og_description' => 'Entretien avec David de Tscharner, artiste invité de l’exposition Paysage fiction du festival accès)s( #18.'
 		),
 		'fabien-leaustic' => array(
 			'title'=> 'Fabien Léaustic',
@@ -72,7 +86,9 @@
 			'type'=> 'video',
 			'yt_id' => 'vYRr0TgDHTE',
 			'slug'=> 'fabien-leaustic',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/fabien-leaustic.jpg',
+			'og_description' => 'Entretien avec Fabien Léaustic, artiste invité de l’exposition Paysage fiction du festival accès)s( #18.'
 		),
 		'jacques-perconte' => array(
 			'title'=> 'Jacques Perconte',
@@ -81,7 +97,9 @@
 			'type'=> 'video',
 			'yt_id' => 'MMx3zE2SGiE',
 			'slug'=> 'jacques-perconte',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/jacques-perconte.jpg',
+			'og_description' => 'Entretien avec Jacques Perconte, artiste invité de l’exposition Paysage fiction du festival accès)s( #18.'
 		),
 		'helen-evans' => array(
 			'title'=> 'Helen Evans',
@@ -90,7 +108,9 @@
 			'type'=> 'video',
 			'yt_id' => 'tdVfHXl6gtc',		
 			'slug'=> 'helen-evans',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/helen-evans.jpg',
+			'og_description' => 'Entretien avec Helen Evans du duo HeHe, artiste invitée de l’exposition Paysage fiction du festival accès)s( #18.'
 		)
 	);
 
@@ -101,7 +121,9 @@
 			'thumb'=> 'feu-rouge.png',
 			'type'=> 'texte',
 			'slug'=> 'feu-rouge',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/feu-rouge.jpg',
+			'og_description' => '…ou comment tromper l’ennui. Un article de Jeanne Hervé Maley sur le festival accès)s( #18, Paysage fiction.'
 		),
 		'immersion' => array(
 			'title'=> 'Immersion dans le paysage',
@@ -109,7 +131,9 @@
 			'thumb'=> 'immersion.png',
 			'type'=> 'texte',
 			'slug'=> 'un-acces-vers-une-immersion',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/un-acces-vers-une-immersion.jpg',
+			'og_description' => 'Un article de Christophe Léon sur le festival accès)s( #18, Paysage fiction.'
 		),
 		'paysage-sonore' => array(
 			'title'=> 'Accès)s( étrange',
@@ -118,7 +142,9 @@
 			'type'=> 'audio',
 			'mp3' => 'audio/paysage-sonore.mp3',
 			'slug'=> 'paysage-sonore',
-			'gallery' => ''
+			'gallery' => '',
+			'og_image' => 'img/og/paysage-sonore.jpg',
+			'og_description' => 'Field recording et paysage sonore réalisé par César Hélion Joly autour du festival accès)s( #18, Paysage fiction.'
 		),
 
 		'panorama' => array(
@@ -128,24 +154,65 @@
 			'type'=> 'photo',
 			'slug'=> 'panorama',
 			'gallery' => 'contents/panorama-gallery.md',
+			'og_image' => 'img/og/panorama.jpg',
+			'og_description' => 'Visite en image de l’exposition Paysage fiction du festival accès)s( #18 par Clara Desperben.'
 		),
 	);
 
 	$contents = array_merge($etudedeterrain, $entretienssouslesoleil, $horspiste);
+
+	// URL for Open Graph protocol
+    $main_folder = str_replace('\\','/',dirname(__FILE__) );
+    $document_root = str_replace('\\','/',$_SERVER['DOCUMENT_ROOT'] );
+	$main_folder = str_replace( $document_root, '', $main_folder);
+	$scheme = isset($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] : 'http'; 
+	$current_url = $scheme . '://' . $_SERVER['SERVER_NAME']. '/' . ltrim( $main_folder, '/' ) . '/';
+    $qs = $_SERVER['QUERY_STRING'];
+
+    if ($qs != '') {
+    	$current_content = $contents[$qs];
+    	$og_title = 'Libre accès)s( — ' . $current_content['title'];
+    	$og_description = $current_content['og_description'];
+    	$og_image = $current_url.$current_content['og_image'];
+    	$og_url = $current_url.'?'.$qs;
+    	$og_type = "article";  	
+    } else {
+    	$og_title = 'Libre accès)s(';
+    	$og_description = "Un regard singulier porté par les étudiants du pôle Nouveaux médias de l’ÉSAD Pyrénées sur le festival accès)s( #18, Paysage fiction";
+    	$og_image = $current_url.'img/og/libreaccess.png';
+    	$og_url = $current_url; 
+    	$og_type = "website"; 
+    }
+    
+    
+
  ?>
-
-
 <html>
 <head>
+	<?php 
+	echo "<!-- " . $current_content['title'] . " -->\n";
+	echo "<!-- Libre accès)s( -->\n";
+	echo "	<!-- Un regard singulier porté par les étudiants du pôle Nouveaux médias de l’ÉSAD Pyrénées sur le festival accès)s( #18, Paysage fiction -->\n\n";
+
+	?>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>libre accès)s(</title>
-	<meta name="description" content="Un regard singulier porté par les étudiants du pôle Nouveaux médias de l’ÉSAD Pyrénées sur le festival accès)s( #18, Paysage fiction" />
+	<title><?= $og_title ?></title>
+	<meta name="description" content="<?= $og_description ?>" />
+
+	<meta id="og_title" property="og:title" content="<?= $og_title ?>" />
+	<meta id="og_type" property="og:type" content="<?= $og_type ?>" />
+	<meta id="og_url" property="og:url" content="<?= $og_url ?>" />
+	<meta id="og_image" property="og:image" content="<?= $og_image ?>" />
+
 	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="plyr/plyr.css">
 	<link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
 	<link rel="stylesheet" type="text/css" href="css/owl.theme.default.min.css">
+	<script type="text/javascript">
+		document.base_url = "<?= $current_url ?>";
+	</script>
 </head>
 <body class="locked" 
 	data-0="background:rgb(255,255,255)"
@@ -226,6 +293,8 @@
 				 	<article id="<?= $c['slug'] ?>"
 				 		data-type="<?= $c['type'] ?>"
 				 		data-mp3="<?= $c['mp3'] ?>" 
+				 		data-og_image="<?= $c['og_image'] ?>" 
+				 		data-og_description="<?= $c['og_description'] ?>" 
 				 		<?php if ($c['gallery'] != ''): ?> data-gallery="true" <?php endif ?>
 				 		class="content content-<?= $c['type'] ?>">
 				 		<div>

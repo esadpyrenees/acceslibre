@@ -128,6 +128,7 @@ a { color: inherit; text-decoration: none; }
     opacity: 1;
 }
 #introbutton {
+    outline: none;
     background: url("img/introbutton.svg")  0 0px;
     pointer-events: all;
     width: 60px;
@@ -137,6 +138,7 @@ a { color: inherit; text-decoration: none; }
     transition: transform 250ms ease-out;
     cursor: pointer;
 }
+#introbutton:focus{outline: none;}
 #introbutton.skip {
     background-position: 0 -60px;
     display: block;
