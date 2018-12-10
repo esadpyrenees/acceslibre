@@ -67,7 +67,7 @@ a { color: inherit; text-decoration: none; }
     }
 }
 
-/* sur-titre d’introduction */
+/* sur-titres d’introduction */
 
 #introtext {
     pointer-events: none;
@@ -80,44 +80,27 @@ a { color: inherit; text-decoration: none; }
     padding: 2em calc(5vw);
 }
 
-.small{
-    font-size: .65em;
-}
-.slide{
+
+.slide {
     visibility: hidden;
 }
-.slide.current,
-.slide.title{
-    visibility: visible;
-}
-.slide.title{
-    /* animation-name: glitch-anim-1;
-    animation-duration: 8s;
-    animation-delay: 13s;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
-    opacity: 1; */
-    font-size: 1.25em;
-}
-/* .slide.credits{
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform-origin: 0 0;
-    transform: rotate(-90deg) translate(-100vh, 100vw);
-    display: block;
-    font-size: .65em;
-    visibility: visible;
-    margin: -1em 0 0 -2em;
-} */
-/* alt */
-.slide.credits {
-    position: absolute;
-    bottom: 3em;
-    display: block;
-    font-size: .5em;
-    margin: 0;
-}
+    .small {
+        font-size: .65em;
+    }
+    .slide.current {
+        visibility: visible;
+    }
+    .slide.title {
+        font-size: 1.25em;
+    }
+    .slide.credits {
+        position: absolute;
+        bottom: 3em;
+        display: block;
+        font-size: .5em;
+        margin: 0;
+    }
+
 .flex {
     display: flex;
     flex-direction: column;
@@ -127,7 +110,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 #intro-overlay{
-    /* pointer-events: none; */
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
     background: black;
@@ -141,57 +123,40 @@ a { color: inherit; text-decoration: none; }
 #intro-overlay.visible{
     opacity: 1;
 }
-
-button.replay.play {
-    background-position: 0 0;
-    opacity: 1;
-}
-.autoplay .replay.play{ display: none; }
-button.replay{
-    background: url("img/play.svg")  0 -60px;
-    pointer-events: all;
-    width: 60px;
-    height: 60px;
-    opacity: 0;
-    border: none;
-    transition: opacity 250ms ease-out 500ms, transform 250ms ease-out;
-    cursor: pointer;
-}
-
-.replay:hover{
-    transform:scale(1.2)
-}
-#intro-overlay.visible button{
-    opacity: 1;
-}
 #intro-overlay.start {
     background: transparent;
     opacity: 1;
-    cursor: pointer;
+}
+#introbutton {
+    background: url("img/introbutton.svg")  0 0px;
     pointer-events: all;
+    width: 60px;
+    height: 60px;
+    display: none;
+    border: none;
+    transition: transform 250ms ease-out;
+    cursor: pointer;
 }
-
-
+#introbutton.skip {
+    background-position: 0 -60px;
+    display: block;
+}
+#introbutton.replay {
+    background-position: 0 0;
+    display: block;
+}
+#introbutton:hover{
+    transform:scale(1.2)
+}
 #video.playing #intro-overlay{
+    opacity: 1;
     background: transparent;
-    justify-content: flex-end;
-    opacity: 1;
-
-}
-#video.playing #intro-overlay button{
-    opacity: 1;
+    justify-content: flex-end; /* aligne le bouton à droite */
 }
 
 
-/* ------------------------------------------------ titrage home */
 
-
-
-
-/* ------------------------------------------------ home */
-
-
-
+/* ------------------------------------------------ nav */
 
 #skrollr-body{
     height:300%;
@@ -213,6 +178,7 @@ button.replay{
     height:40vh;
     pointer-events: none;
 }
+
 #mountain3 { z-index:3; }
 #mountain2 { z-index:4; }
 #mountain1 { z-index:5; }
@@ -243,20 +209,13 @@ button.replay{
 }
 .line > * {
     width: 35vw;
-    /* height: 100%; */
     padding: 1em;
     display: inline-block;
     vertical-align: top;
 }
 
-/* @media (max-width: 600px){
-    .line > * { width: 75vw; }
-}
-@media (max-width: 450px){
-    .line > * { width: 115vw; }
-}
- */
-/* ------------------------------------------------ nav */
+
+/* ------------------------------------------------ nav contents */
 
 .line header {
     padding: 3em;
@@ -265,22 +224,21 @@ header h2 {
     margin: 0 0 .5em;
     font-weight: normal;
     font-family: "Savate";
-    /* font-family: "Ruda";
-    text-transform: uppercase;
-    letter-spacing: 0.05em; */
     margin-bottom: 0.25em;
     font-weight: 900;
     font-size: 1em;
     font-size: 1.15em;
 }
+
 header p { margin: 0; max-width:20ch; white-space: normal;}
 
 .homelink a {
     display: inline-block;
     pointer-events: all;
 }
-.homelink h3 { display: none; }
-
+.homelink h3 { 
+    display: none; 
+}
 .homelink .img{
     display: block;
     position: relative;
@@ -302,9 +260,13 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
-.homelink a:hover img {filter: none; }
+.homelink a:hover img {
+    filter: none; 
+}
 
-.audioinfo {display: none;}
+.audioinfo { 
+    display: none; /* texte pour les audios (à l’intérieur du lien) */
+}
 
 
 
@@ -341,7 +303,8 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     white-space: nowrap;
     padding-right: 100vw;
 }
-#audio[src=""] ~ button { display: none; }
+
+#audio[src=""] ~ button { display: none; } /* Si audio sans src */
 
 #audioplayer button{
     background: black;
@@ -354,6 +317,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     top: 0;
     z-index: 7;
 }
+
 #audioplayer strong,
 #audioplayer span{
     background: url('img/playpause.svg');
@@ -369,14 +333,14 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 #audioplayer span{
     background-position: 0 0;
 }
+
 #audioplayer .paused strong{ display: block; }
 #audioplayer .paused span{ display: none; }
-
 #audioplayer .playing strong{ display: none; }
 #audioplayer .playing span{ display: block; }
 
 
-/* ------------------------------------------------ content */
+/* ------------------------------------------------ à propos */
 
 #aproposlink {
     position: absolute;
@@ -396,11 +360,16 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     filter: none;
 }
 
+
+/* ------------------------------------------------ titre du site */
+
 #site-header {
     position: relative;
-    /* position: sticky; */
-    padding: 3em;
+    /* 
+    position: sticky; 
     top: 0;
+    */
+    padding: 3em;    
 }
 #site-header h2 {
     top: 0;
@@ -408,8 +377,19 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     margin-top: 0;
     color: black;
 }
+#site-header i {
+    display: inline-block;
+    animation: cafeine 20ms infinite alternate;
+}
 
-#intro_libre_acces { position: absolute; }
+@keyframes cafeine {
+    0% {transform: translateX(0px);}
+    25% {transform: translateX(-1px);}
+    100% {transform: translateX(1px);}
+}
+#intro_libre_acces { position: absolute; } /* Permet le changement de contenu sans modification du layout */
+
+/* ------------------------------------------------ contenus */
 
 #content { 
     display: flex;
@@ -418,9 +398,9 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     padding: 0 3em 3em;
 }
 .content {
-    display: none;
-    overflow: auto;
-    flex:2 ;
+    display: none; /* Cache tous les contenus */
+    overflow: auto; 
+    flex:2; /* À mettre en relation avec #aside { flex: 1; } */
 }
 .content > div {
     visibility: hidden;
@@ -430,10 +410,14 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     display: block;
 }
 .content.hidden > div{
+    /* État temporaire : contenus en transition */
     opacity: 0;
-    min-height: 120vh;
-    display: none;
+    min-height: 120vh; 
+    display: none; /* @todo bizarre */
 }
+
+
+/* ------------------------------------------------ mise en forme des contenus */
 
 .content a {
     text-decoration: underline;
@@ -447,28 +431,32 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 .content ul {
     margin: 1em 0 .25em;
 }
-.content-texte .texte {
-    max-width: 40em;
-    min-width: 28em;
-    padding-right: 80px;
-}
 .content h4 + p {
     margin-top: 0;
 }
 
-/* texte */
-
-.content-texte p {
-    line-height: 1.5;
-}
 .content h1 {
     font-size: 2em;
     font-family: "Savate";
     line-height: 1.2;
     margin: 2rem auto 1rem auto;
     color: black;
-    max-width: 1280px !important;
+    max-width: 1280px !important; /* @todo important ? */
 }
+
+.content p {
+    line-height: 1.5;
+}
+
+/* mise en page du texte */
+
+.content-texte .texte {
+    max-width: 40em;
+    min-width: 28em;
+    padding-right: 80px;
+}
+
+/* aside pour images selon le scroll */
 
 #aside{
     position: sticky;
@@ -483,9 +471,14 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     order: 2;
     visibility: visible;
 }
-#aside.hidden{ visibility: hidden; }
-#aside:empty{display: none;}
-.ref { background: black; display: inline-block; width: 12ch; height: .6em; }
+#aside.hidden { visibility: hidden; }
+#aside:empty { display: none;}
+.ref { 
+    background: black; 
+    display: inline-block; 
+    width: 12ch; 
+    height: .6em; 
+}
 
 #aside figure {
     margin: 0;
@@ -518,17 +511,22 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
 }
 
 /* gallery */
+
+.gallery { 
+    margin-top: 1em; 
+}
+
 .gimg p {
     font-size: .85em;
 }
-.gallery { margin-top: 1em; }
 
 .owl-nav {
     position: absolute;
     top: 50%;
-    font-size: 3em;
     color: white;
     width: 100%;
+    font-size: 3em;
+    margin-top: -1.5em;
 }
 .owl-prev {
     position: absolute;
@@ -538,22 +536,9 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     position: absolute;
     right: .75em;
 }
+
 /* ------------------------------------------------ video content */
 
-
-.content .videoWrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    padding-top: 25px;
-    height: 0;
-}
-.content .videoWrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 .plyr__poster {
     background-color: white;
     background-size: cover;
@@ -561,7 +546,7 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     background-repeat: no-repeat;
 }
 
-/* ------------------------------------------------ media */
+/* ------------------------------------------------ media query brutale… */
 
 @media (max-width: 450px) {
     
@@ -574,48 +559,44 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
         bottom: auto !important; 
         top:auto !important;
         height: auto !important;
-        padding: 0 !important;;
+        padding: 0 !important;
     }
 
     .mountain {
-       /*  border-top: 8px solid black;
-        padding-top: 1em; */
-        margin-top: 6em;
+       margin-top: 6em;
     }
+    #content.hidden + #nav :first-child { margin-top: 0; }
+
     .line > * { display: block; width: auto !important; }
     .homelink {margin: 1em 0 !important; width: auto !important}
     .homelink img {
-        /* max-width: 70%; */
         margin: 0 auto;
     }
     .line header h2 { font-size: 2em; color: black; white-space: normal; line-height: 1; }
     #site-header {}
     header p { max-width: 100%; }
     #aproposlink {
-        /* position: static;
-        width: auto;
-        background: none;
-        padding: 0 20px; */
         position: absolute;
         background: none;
-        width: 30px;
+        width: 25px;
         padding: 0;
         z-index: 999;
-        height: 30px;
-        right: 10px;
+        height: 25px;
+        right: 15px;
+        top: 62px;
+        border-radius: 100%;
+        background: black;
+        color: white;
     }
     #aproposlink::after {
-
         content: "?";
         display: block;
-        /* color: rgba(255,255,255,.6); */
+        color: white;
         position: absolute;
         top: 0;
         left: -240px;
-        font-weight: bold;
-        font-size: 1.5em;
-        line-height: 30px;
-
+        font-size: .85em;
+        line-height: 25px;
     }
 
     #site-header,
@@ -625,7 +606,6 @@ header p { margin: 0; max-width:20ch; white-space: normal;}
     }
     
     #intro_libre_acces { position: static; min-height: 6em; }
- /*    .content > div {padding: 20px;} */
 
     #aside { display: none; }
     .content-texte .texte { min-width: 0; padding: 0; }

@@ -1,6 +1,6 @@
 $(function(){
 
-    // TZZZ
+    // Texte d’introduction aléatoire
 
     function changeIntro() {
 
@@ -13,18 +13,15 @@ $(function(){
             'Fond vert power',
             'Essayer encore, rater encore, rater mieux',
             'WOAW! World open acces)s( web',
-            'Méthodologie, gestion de projet : ✓'
+            'Une approche documentaire, des regards singuliers',
+            'Méthodologie, gestion de projet : ~<br> Deadline respectée : ✓'
         ]
         var randtext = texts[Math.floor(Math.random() * texts.length)];
 
         $('#intro_libre_acces').html(randtext);
     }
 
-    
-    
-
-
-    // loop with random delay
+    // délai aléatoire
     (function loop() {
         var rand = Math.round(Math.random() * 5000 ) + 5000;
         setTimeout(function() {
@@ -33,17 +30,20 @@ $(function(){
         }, rand);
     }());
 
+
     /* ------------------------------------------------------------
     ---------------------------------------------------------------
     Skrollr
     ---------------------------------------------------------------
     -------------------------------------------------------------*/
+
     var vw = $(window).width();
     var skrollrinit = true;
+    var sk = null;
 
-
-    if(vw>450){
-        var sk = skrollr.init({
+    // horrible test de taille d’écran = pas de skrollr sur mobile
+    if(vw > 450){
+        sk = skrollr.init({
             // forceHeight:false,
             constants: {
                 offsetstart: function() {
@@ -72,28 +72,33 @@ $(function(){
     var texte = {
         limit: window.innerHeight / 2,
         check_interval: null,
-        init: function(el_id){
 
+        init: function(href){
+
+            // @todo remplacer le setinterval par 
+            // requestAnimationFrame(callback)
             clearInterval(texte.check_interval);
 
-            var images_refs = [],
-                aside_images = [],
-                el = document.querySelector(el_id);
+            var images_refs = [], // stockage des références
+                aside_images = [], // stockage des images dans le #aside
+                el = document.querySelector(href);
                 images = el.querySelectorAll('.texte img'),
                 aside = document.querySelector('#aside');
 
+            // on cache le aside
             aside.classList.add('hidden');
+            // on le vide de son potentiel précédent contenu
             aside.innerHTML = '';
 
-            images.forEach( function(image, index) {
+            for (var i = 0; i < images.length; i++) {
+                var image = images[i];
                 var span =  document.createElement('span');
-                span.setAttribute('rel', index);
+                span.setAttribute('rel', i);
                 span.className="ref";
                 //ajout du span à la liste des éléments références
                 images_refs.push(span);
                 // insertion de l’élément référence dans le DOM avant l’image
                 image.parentNode.insertBefore(span, image)
-
 
                 // déplacement de l’image vers aside
                 // on crée une figure pour mettre l’image ET la légende
@@ -102,14 +107,14 @@ $(function(){
                 figcaption.innerHTML = image.getAttribute('alt');
                 figure.appendChild(image.cloneNode());
                 figure.appendChild(figcaption);
-
                 aside.appendChild(figure);
+
                 // stockage de l’image dans la liste
                 aside_images.push(figure);
 
-                // on caceh l’image originale
+                // on cache l’image originale
                 image.style.display='none';
-            });
+            };
 
             // check des images dans le viewport
             texte.check_interval = setInterval(function(){
@@ -181,7 +186,7 @@ $(function(){
                audio.element.setAttribute('src', "" );
             }, false);
 
-            var txt = textelement.text();
+            var txt = textelement;
             audio.textcontainer.classList.remove('marquee');
             audio.texte.innerHTML = txt;
             void audio.textcontainer.offsetWidth; // trick : https://css-tricks.com/restart-css-animation/
@@ -215,6 +220,7 @@ $(function(){
         new: function(href){
             var id = '#player-' + href.replace('#', '');
 
+            // instanciation de Plyr
             video.player = new Plyr(id);
 
             video.player.on('play', event => {
@@ -241,28 +247,21 @@ $(function(){
 
     var gallery = {
         owl: null,
-
         new: function(href){
-
             var id = href + '-gallery';
-            console.log(id)
             $(id).owlCarousel({
                 items:1,
                 loop:true,
                 dots:false,
                 nav:true
             });
-
         },
-
         destroy:function(){
             if(gallery.owl != null) {
                 // gallery.owl.destroy();
             }
         }
     }
-
-
 
 
 
@@ -274,14 +273,22 @@ $(function(){
 
     // liens navigation principale
     $('.contentlink').on('click', function(e){
-        e.stopPropagation();
+        
+        var href = $(this).attr('href');
+        displayContent(href);
         e.preventDefault();
+        e.stopPropagation();
+    });
 
-        var $this = $(this),
-            type = $this.attr('data-type'),
-            has_gallery = $this.attr('data-gallery') ? true : false,
-            href = $this.attr('href'),
-            $target = $(href);
+    // affichage du contenu
+    function displayContent(href){
+        if (href == null) return;
+
+        var $target = $(href),
+            type = $target.attr('data-type'),
+            has_gallery = $target.attr('data-gallery') ? true : false;
+
+        history.pushState({href: href}, "", href);
 
         // cas de la vidéo
         if (type == "video") {
@@ -291,7 +298,6 @@ $(function(){
             video.destroy();
         }
 
-        console.log('has_gallery ' + has_gallery)
         // cas d’une galerie
         if (has_gallery) {
 
@@ -303,7 +309,10 @@ $(function(){
 
         // cas de l’audio
         if (type == "audio") {
-            audio.newaudio( $this.attr('data-mp3'), $this.find('.audioinfo') );
+            var mp3 = $target.attr('data-mp3'),
+                text = $target.find('.audio p').text();
+
+            audio.newaudio( mp3, text );
             return false;
         }
 
@@ -315,21 +324,20 @@ $(function(){
         }
 
 
-
-
-        // cas des pages texte ou video
-
+        // gestion de l’affichage des contenus
 
         var $is_article_visible = $('article.visible');
         $is_article_visible.addClass('hidden');
         $is_article_visible.css('display', 'none');
 
-        $('#skrollr-body').animate({
+        var $skbody = $('#skrollr-body');
+
+        $skbody.animate({
             scrollTop: 0
         }, 'slow', function(){
 
             $('html, body').animate({
-                scrollTop: $('#skrollr-body').offset().top
+                scrollTop: $skbody.offset().top
             }, 'slow', function(){
 
                 $target.slideDown('fast', function() {
@@ -338,18 +346,33 @@ $(function(){
                     $(this).removeClass('hidden');
 
                     $(this).addClass('visible');
-                    sk.refresh();
+
+                    if (sk != null) sk.refresh();
+
+                    
 
                 });
             });
         });
 
+    };
+
+    window.addEventListener('popstate', function(event) {
+        if (event.state.href) {
+            displayContent(event.state.href);
+        }
     });
 
+    if(window.location.hash != ""){
+        if($(window.location.hash).length){
+            // in intro.js
+            switchToHome();  
+            displayContent(window.location.hash);
+        } else {
+            history.replaceState({href: ""}, document.title, document.location.href);
+        }
 
+    }
 
-    // responsive video
-
-    $('iframe').wrap('<div class="videoWrapper"></div>');
 
 })

@@ -138,8 +138,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>libre accès)s( — paysage fiction</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>libre accès)s(</title>
+	<meta name="description" content="Un regard singulier porté par les étudiants du pôle Nouveaux médias de l’ÉSAD Pyrénées sur le festival accès)s( #18, Paysage fiction" />
 	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="plyr/plyr.css">
@@ -160,13 +161,12 @@
 		<div id="video">
 			<div id="bar"></div>
 			<video
-				autoplay
 				poster="" >
 				<source type="video/mp4" src="video/intro.mp4">
 				<source type="video/webm" src="video/intro.webm">
 			</video>
 			<div id="intro-overlay" class="start">
-				<button class="replay play" id="replay">
+				<button class="" id="introbutton">
 					<span></span>
 				</button>
 			</div>
@@ -179,7 +179,7 @@
 					<div class="slide small" data-start="9" data-end="12">
 						présentent
 					</div>
-					<div class="slide savate title" data-start="13" data-end="23">
+					<div class="slide savate title" data-start="1" data-end="23">
 						Libre accès)s(
 					</div>
 					<div class="slide small" data-start="18" data-end="23">
@@ -188,7 +188,7 @@
 						du Pôle Nouveaux médias  <br>
 						de l’École supérieure d’art des Pyrénées
 					</div>
-					<div class="slide credits" data-start="23" data-end="28">
+					<div class="slide credits" data-start="23" data-end="32">
 						Musique : <i>Nuh Nuh</i>, © Joasihno 
 					</div>
 				</div>
@@ -224,6 +224,9 @@
 				<aside id="aside"></aside>
 				<?php foreach ($contents as $c): ?>
 				 	<article id="<?= $c['slug'] ?>"
+				 		data-type="<?= $c['type'] ?>"
+				 		data-mp3="<?= $c['mp3'] ?>" 
+				 		<?php if ($c['gallery'] != ''): ?> data-gallery="true" <?php endif ?>
 				 		class="content content-<?= $c['type'] ?>">
 				 		<div>
 				 			<h1><?= $c['title'] ?></h1>
@@ -249,6 +252,7 @@
 				 		</div>
 				 	</article>
 				<?php endforeach ?>
+
 				<article id="apropos" class="content content-texte">
 			 		<div>
 			 			<h1>À propos</h1>
@@ -274,8 +278,7 @@
 
 
 			<div id="nav">
-				<!-- Étude de terrain  -->
-
+				
 				<div class="mountain dragscroll" id="mountain1"
 
 					 data-_offsetstart="transform:translate(0vw,0vh);" data-_offsetend="transform:translate(-195vw,0vh);" >
@@ -294,7 +297,7 @@
 						 		<?php if ($c['gallery'] != ''): ?> data-gallery="true" <?php endif ?>
 						 		id="homelink-<?= $c['slug'] ?>"	>
 						 		<span class="info">[ <?= $c['type'] ?> ]</span>
-						 		<span class="img"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
+						 		<span class="img"><img src="img/home/<?= $c['thumb'] ?>"></span>
 						 		<h3><?= $c['title'] ?></h3>
 						 		<?php if ($c['type'] == 'audio'): ?>
 						 			<div class="audioinfo"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
@@ -325,7 +328,7 @@
 						 		<?php if ($c['gallery'] != ''): ?> data-gallery="true" <?php endif ?>
 						 		data-mp3="<?= $c['mp3'] ?>">
 						 		<span class="info">[ <?= $c['type'] ?> ]</span>
-						 		<span class="img"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
+						 		<span class="img"><img src="img/home/<?= $c['thumb'] ?>"></span>
 						 		<h3><?= $c['title'] ?></h3>
 						 		<?php if ($c['type'] == 'audio'): ?>
 						 			<div class="audioinfo"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
@@ -356,7 +359,7 @@
 						 		<?php if ($c['gallery'] != ''): ?> data-gallery="true" <?php endif ?>
 						 		data-mp3="<?= $c['mp3'] ?>">
 						 		<span class="info">[ <?= $c['type'] ?> ]</span>
-						 		<span class="img"><img src="img/althomegreen/<?= $c['thumb'] ?>"></span>
+						 		<span class="img"><img src="img/home/<?= $c['thumb'] ?>"></span>
 						 		<h3><?= $c['title'] ?></h3>
 						 		<?php if ($c['type'] == 'audio'): ?>
 						 			<div class="audioinfo"><?= $Parsedown->text( file_get_contents($c['file']) ); ?></div>
