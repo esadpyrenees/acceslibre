@@ -296,8 +296,21 @@ $(function(){
             type = $target.attr('data-type'),
             has_gallery = $target.attr('data-gallery') ? true : false;
 
+        // gestion de l’historique
         var url = '?' + href.substring(1);
         history.pushState({hash: href}, "", url);
+
+
+        // live open graph modification
+        var og_tags = {
+            description: $target.attr('data-og_description'),
+            image: $target.attr('data-og_image'),
+            type: 'article',
+            url: document.base_url + href
+        }
+        for (var key in og_tags) {
+            $('#og_' + key ).attr('content', og_tags[key]);
+        }
 
         // cas de la vidéo
         if (type == "video") {
@@ -380,11 +393,13 @@ $(function(){
 
 
     // chargement initial
-    // recherche si un paramètre est 
-    var srch = window.location.search.substring(1);
+    // recherche si un paramètre est présent dans l’url
+    // élimine le premier caractère (?) : .substring(1)
+    // prend uniquement le premier paramètre : split('&')[0]
+    var srch = window.location.search.substring(1).split('&')[0];
     console.log(srch)
 
-    // hash management (visite d’une page qui contient un #hash)
+    // hash management (visite d’une page qui contient un ?hash)
     if(srch != ""){
         var hash = "#" + srch;
         if($(hash).length){

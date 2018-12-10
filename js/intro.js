@@ -33,7 +33,7 @@ titles.forEach( function(element, index) {
 setTimeout(function(){
     if(autoplay){                   
         wrapper.classList.add('autoplay');
-        if (window.location.hash == "") {
+        if (window.location.search == "") {
             playVideo();
         }
     }

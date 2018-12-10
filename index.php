@@ -132,7 +132,7 @@
 			'type'=> 'texte',
 			'slug'=> 'un-acces-vers-une-immersion',
 			'gallery' => '',
-			'og_image' => 'img/og/immersion.png',
+			'og_image' => 'img/og/im.png',
 			'og_description' => 'Un article de Christophe Léon sur le festival accès)s( #18, Paysage fiction.'
 		),
 		'paysage-sonore' => array(
@@ -143,7 +143,7 @@
 			'mp3' => 'audio/paysage-sonore.mp3',
 			'slug'=> 'paysage-sonore',
 			'gallery' => '',
-			'og_image' => 'img/og/acces-etrange.png',
+			'og_image' => 'img/og/ae.png',
 			'og_description' => 'Field recording et paysage sonore réalisé par César Hélion Joly autour du festival accès)s( #18, Paysage fiction.'
 		),
 
@@ -154,7 +154,7 @@
 			'type'=> 'photo',
 			'slug'=> 'panorama',
 			'gallery' => 'contents/panorama-gallery.md',
-			'og_image' => 'img/og/panorama.png',
+			'og_image' => 'img/og/pa.png',
 			'og_description' => 'Visite en image de l’exposition Paysage fiction du festival accès)s( #18 par Clara Desperben.'
 		),
 	);
