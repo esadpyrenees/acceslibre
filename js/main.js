@@ -195,6 +195,9 @@ $(function(){
             audio.textcontainer.style.animationDuration = txt.length * 250; // magick number
         },
         destroy:function(){
+            audio.element.pause();
+            audio.button.classList.remove('playing');
+            audio.button.classList.add('paused');
             audio.element.setAttribute('src', "" );
             audio.texte.innerHTML = "";
         },
@@ -280,6 +283,11 @@ $(function(){
         e.stopPropagation();
     });
 
+    var current = {
+        content_type:null,
+        content_id:null
+    }
+
     // affichage du contenu
     function displayContent(href){
         if (href == null) return;
@@ -288,7 +296,7 @@ $(function(){
             type = $target.attr('data-type'),
             has_gallery = $target.attr('data-gallery') ? true : false;
 
-        history.pushState({href: href}, "", href);
+        history.pushState({hash: href}, "", href);
 
         // cas de la vidéo
         if (type == "video") {
@@ -313,7 +321,9 @@ $(function(){
                 text = $target.find('.audio p').text();
 
             audio.newaudio( mp3, text );
-            return false;
+            
+        } else {
+            audio.destroy();
         }
 
         // cas du texte
@@ -323,12 +333,9 @@ $(function(){
             texte.destroy();
         }
 
-
         // gestion de l’affichage des contenus
 
-        var $is_article_visible = $('article.visible');
-        $is_article_visible.addClass('hidden');
-        $is_article_visible.css('display', 'none');
+        $(current.content_id).addClass('hidden').css('display', 'none');
 
         var $skbody = $('#skrollr-body');
 
@@ -340,36 +347,37 @@ $(function(){
                 scrollTop: $skbody.offset().top
             }, 'slow', function(){
 
+                if (type=='audio') return false;
+
                 $target.slideDown('fast', function() {
                     $('#aside, #content').removeClass('hidden');
-
                     $(this).removeClass('hidden');
-
                     $(this).addClass('visible');
-
                     if (sk != null) sk.refresh();
-
-                    
-
                 });
+
+                current.content_type = type;
+                current.content_id = href;
             });
         });
 
     };
 
+
+    // history popstate
     window.addEventListener('popstate', function(event) {
-        if (event.state.href) {
-            displayContent(event.state.href);
+        if (event.state.hash) {
+            displayContent(event.state.hash);
         }
     });
 
+    // hash management (visite d’une page qui contient un #hash)
     if(window.location.hash != ""){
         if($(window.location.hash).length){
-            // in intro.js
-            switchToHome();  
+            switchToHome(); // in intro.js
             displayContent(window.location.hash);
         } else {
-            history.replaceState({href: ""}, document.title, document.location.href);
+            history.replaceState({hash: ""}, document.title, document.location.href);
         }
 
     }
