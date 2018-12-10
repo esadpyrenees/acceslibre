@@ -18,7 +18,7 @@
 			'yt_id' => 'PbZjzjqm6CQ',
 			'slug'=> 'charles-carcopino',
 			'gallery' => '',
-			'og_image' => 'img/og/charles-carcopino.jpg',
+			'og_image' => 'img/og/cc.png',
 			'og_description' => 'Entretien avec Charles Carcopino, commissaire du festival accès)s( #18, Paysage fiction.'
 		),
 		'pauline' => array(
@@ -29,7 +29,7 @@
 			'mp3' => 'audio/pauline-chasseriaud.mp3',
 			'slug'=> 'pauline-chasseriaud',
 			'gallery' => '',
-			'og_image' => 'img/og/pauline-chasseriaud.jpg',
+			'og_image' => 'img/og/pc.png',
 			'og_description' => 'Entretien avec Pauline Chasseriaud, directrice de l’association accès)s( cultures électroniques autour du festival accès)s( #18, Paysage fiction.'
 		),
 		'rapdm' => array(
@@ -40,7 +40,7 @@
 			'yt_id' => 'Uu3p_wvyVmE',
 			'slug'=> 'rapdm',
 			'gallery' => '',
-			'og_image' => 'img/og/rapdm.jpg',
+			'og_image' => 'img/og/rapdm.png',
 			'og_description' => 'Rencontre avec les “petites mains” de l’exposition Paysage fiction du festival accès)s( #18, étudiants de l’École supérieure d’art des Pyrénées en stage au Bel Ordinaire.'
 		),
 		'quitterie' => array(
@@ -51,7 +51,7 @@
 			'mp3' => 'audio/quitterie-charpentier.mp3',
 			'slug'=> 'quitterie-charpentier',
 			'gallery' => '',
-			'og_image' => 'img/og/quitterie-charpentier.jpg',
+			'og_image' => 'img/og/qc.png',
 			'og_description' => 'Entretien avec Quitterie Charpentier, chargée de communication et de médiation de l’association accès)s( cultures électroniques autour du festival accès)s( #18, Paysage fiction.'
 		)
 	);
@@ -65,7 +65,7 @@
 			'yt_id' => 'oNmUq1fsj7M',
 			'slug'=> 'mischa-daams',
 			'gallery' => '',
-			'og_image' => 'img/og/mischa-daams.jpg',
+			'og_image' => 'img/og/md.png',
 			'og_description' => 'Entretien avec Mischa Daams, artiste néerlandais, invité de l’exposition Paysage fiction du festival accès)s( #18.'
 		),
 		'david-de-tscharner' => array(
@@ -76,7 +76,7 @@
 			'yt_id' => 'fllkZOyh43Y',
 			'slug'=> 'david-de-tscharner',
 			'gallery' => '',
-			'og_image' => 'img/og/david-de-tscharner.jpg',
+			'og_image' => 'img/og/ddt',
 			'og_description' => 'Entretien avec David de Tscharner, artiste invité de l’exposition Paysage fiction du festival accès)s( #18.'
 		),
 		'fabien-leaustic' => array(
@@ -87,7 +87,7 @@
 			'yt_id' => 'vYRr0TgDHTE',
 			'slug'=> 'fabien-leaustic',
 			'gallery' => '',
-			'og_image' => 'img/og/fabien-leaustic.jpg',
+			'og_image' => 'img/og/fl.png',
 			'og_description' => 'Entretien avec Fabien Léaustic, artiste invité de l’exposition Paysage fiction du festival accès)s( #18.'
 		),
 		'jacques-perconte' => array(
@@ -98,7 +98,7 @@
 			'yt_id' => 'MMx3zE2SGiE',
 			'slug'=> 'jacques-perconte',
 			'gallery' => '',
-			'og_image' => 'img/og/jacques-perconte.jpg',
+			'og_image' => 'img/og/jp.png',
 			'og_description' => 'Entretien avec Jacques Perconte, artiste invité de l’exposition Paysage fiction du festival accès)s( #18.'
 		),
 		'helen-evans' => array(
@@ -109,7 +109,7 @@
 			'yt_id' => 'tdVfHXl6gtc',		
 			'slug'=> 'helen-evans',
 			'gallery' => '',
-			'og_image' => 'img/og/helen-evans.jpg',
+			'og_image' => 'img/og/he.png',
 			'og_description' => 'Entretien avec Helen Evans du duo HeHe, artiste invitée de l’exposition Paysage fiction du festival accès)s( #18.'
 		)
 	);
@@ -122,7 +122,7 @@
 			'type'=> 'texte',
 			'slug'=> 'feu-rouge',
 			'gallery' => '',
-			'og_image' => 'img/og/feu-rouge.jpg',
+			'og_image' => 'img/og/fr.png',
 			'og_description' => '…ou comment tromper l’ennui. Un article de Jeanne Hervé Maley sur le festival accès)s( #18, Paysage fiction.'
 		),
 		'immersion' => array(
@@ -132,7 +132,7 @@
 			'type'=> 'texte',
 			'slug'=> 'un-acces-vers-une-immersion',
 			'gallery' => '',
-			'og_image' => 'img/og/un-acces-vers-une-immersion.jpg',
+			'og_image' => 'img/og/immersion.png',
 			'og_description' => 'Un article de Christophe Léon sur le festival accès)s( #18, Paysage fiction.'
 		),
 		'paysage-sonore' => array(
@@ -143,7 +143,7 @@
 			'mp3' => 'audio/paysage-sonore.mp3',
 			'slug'=> 'paysage-sonore',
 			'gallery' => '',
-			'og_image' => 'img/og/paysage-sonore.jpg',
+			'og_image' => 'img/og/acces-etrange.png',
 			'og_description' => 'Field recording et paysage sonore réalisé par César Hélion Joly autour du festival accès)s( #18, Paysage fiction.'
 		),
 
@@ -154,7 +154,7 @@
 			'type'=> 'photo',
 			'slug'=> 'panorama',
 			'gallery' => 'contents/panorama-gallery.md',
-			'og_image' => 'img/og/panorama.jpg',
+			'og_image' => 'img/og/panorama.png',
 			'og_description' => 'Visite en image de l’exposition Paysage fiction du festival accès)s( #18 par Clara Desperben.'
 		),
 	);
