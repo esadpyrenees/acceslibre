@@ -37,7 +37,8 @@ a { color: inherit; text-decoration: none; }
     height: 100vh;
     height: calc(100vh + 2em);
     position: relative;
-    background: black url("img/preloader.gif") no-repeat center center;
+    background: url("img/preloader.svg") no-repeat center center;
+    background-size: 60px;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
