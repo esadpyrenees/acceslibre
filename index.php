@@ -203,6 +203,7 @@
 	<meta id="og_type" property="og:type" content="<?= $og_type ?>" />
 	<meta id="og_url" property="og:url" content="<?= $og_url ?>" />
 	<meta id="og_image" property="og:image" content="<?= $og_image ?>" />
+	<meta id="og_description" property="og:description" content="<?= $og_description ?>" />
 
 	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -239,7 +240,7 @@
 			<div id="introtext">
 				<div class="flex">
 					<div class="slide small" data-start="4" data-end="8">
-						ÉSA Pyrénées<br>
+						ÉSAD Pyrénées<br>
 						+ accès)s(
 					</div>
 					<div class="slide small" data-start="9" data-end="12">
