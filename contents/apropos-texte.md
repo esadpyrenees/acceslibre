@@ -1,6 +1,6 @@
 ### Le workshop
 
-Ce site web est le résultat d’un workshop mené par les étudiants du pôle Nouveaux Médias de l’École Supérieure d’Art des Pyrénées, accompagnés par [Sarah Taurinya Brown](http://enreportagepermanent.com/), journaliste indépendante, dans le contexte du festival accès)s( 2018.
+Ce site web est le résultat d’un workshop mené par les étudiants du pôle Nouveaux Médias de l’École supérieure d’art et de design des Pyrénées, accompagnés par [Sarah Taurinya Brown](http://enreportagepermanent.com/), journaliste indépendante, dans le contexte du festival accès)s( 2018.
 
 Issu de l’axe de recherche “Écritures numériques” porté au sein du pôle par Julien Bidoret, Vincent Meyer et Jean Paul Labro, ce workshop se proposait d’expérimenter et de questionner les médias numériques tant dans leurs logiques de conception éditoriale que de réalisation de contenus ou de diffusion.
 
